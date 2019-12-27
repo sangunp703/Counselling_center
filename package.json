@@ -7,7 +7,7 @@
     "start": "node counseling_center_server.js",
     "build": "webpack",
     "watch": "webpack -w",
-    "style-build": "node-sass style/sass --output style/css",
+    "style-build": "node-sass --watch style/sass --output style/css",
     "test": "nodemon counseling_center_server.js"
   },
   "repository": "git+https://github.com/sangunp703/Counselling_center.git",

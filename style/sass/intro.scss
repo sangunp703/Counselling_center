@@ -1,8 +1,10 @@
+@import 'https://fonts.googleapis.com/css?family=Nanum+Brush+Script&display=swap';
+
 body {
   background-color: #222;
 }
-.intro-box{
-  width: 1000px;
+.intro-box {
+  width: 900px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -14,26 +16,47 @@ body {
   border-radius: 20px;
   padding: 50px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     border: 5px solid #eee;
     border-radius: 20px;
-    box-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 10px #7f55ff inset, 0 0 20px #7f55ff inset, 0 0 40px #7f55ff inset, 0 0 80px #7f55ff inset, 0 0 120px #7f55ff inset;
+    box-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 10px #7f55ff inset, 0 0 20px #7f55ff inset, 0 0 40px #7f55ff inset, 0 0 80px #7f55ff inset;
   }
 }
-.title span{
-  margin: 20px;
-  line-height: 100px;
-}
+
 .title {
   font-weight: bold;
   font-size: 4em;
+  font-family: 'Nanum Brush Script', cursive;
   color: #eee;
   filter: blur(0px);
-  text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff;
+  text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
 }
 
-.bottle-img{
+.title span {
+  margin: 20px;
+  line-height: 100px;
+}
+
+.bottle-img {
   content: url(bottle.svg);
   width: 400px;
   height: auto;
 }
+
+.image{
+  width: 400px;
+  height: 400px;
+}
+
+.shadow{
+  fill: none;
+  stroke: #7f55ff;
+  stroke-width: 30;
+  filter: url(#dropshadow);
+}
+.way{
+  fill: none;
+  stroke: #eee;
+  stroke-width: 10;
+}
+
