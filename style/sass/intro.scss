@@ -1,0 +1,39 @@
+body {
+  background-color: #222;
+}
+.intro-box{
+  width: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #000;
+  border-radius: 20px;
+  padding: 50px;
+  cursor: pointer;
+  &:hover{
+    border: 5px solid #eee;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 10px #7f55ff inset, 0 0 20px #7f55ff inset, 0 0 40px #7f55ff inset, 0 0 80px #7f55ff inset, 0 0 120px #7f55ff inset;
+  }
+}
+.title span{
+  margin: 20px;
+  line-height: 100px;
+}
+.title {
+  font-weight: bold;
+  font-size: 4em;
+  color: #eee;
+  filter: blur(0px);
+  text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff;
+}
+
+.bottle-img{
+  content: url(bottle.svg);
+  width: 400px;
+  height: auto;
+}

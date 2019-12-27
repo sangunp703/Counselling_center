@@ -4,7 +4,11 @@
   "description": "React를 이용한 SPA 웹사이트이고, 간단한 정보를 입력한 뒤 회원가입을 하면 고민을 털어놓고 그 고민을 다른 회원에 의해 조언을 구할 수 있는 롤링페이퍼 형식 서비스",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node counseling_center_server.js",
+    "build": "webpack",
+    "watch": "webpack -w",
+    "style-build": "node-sass style/sass --output style/css",
+    "test": "nodemon counseling_center_server.js"
   },
   "repository": "git+https://github.com/sangunp703/Counselling_center.git",
   "keywords": [],
@@ -25,6 +29,11 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.0",
+    "img-loader": "^3.0.1",
+    "node-sass": "^4.13.0",
+    "style-loader": "^1.1.1",
+    "url-loader": "^3.0.0",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
   }
