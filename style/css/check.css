@@ -1,0 +1,37 @@
+.check-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: url(../../assets/jpg/pub.jpg);
+  background-size: 100vw 100vh; }
+  .check-container .part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75); }
+  .check-container .entrance {
+    background-color: rgba(0, 0, 0, 0); }
+  .check-container .talk-box {
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 30vw;
+    height: 4vw;
+    line-height: 4vw;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 4vw;
+    font-size: 1.5vw;
+    font-weight: bold; }
+  .check-container .security {
+    content: url(../../assets/jpg/security.png);
+    width: 18vw;
+    height: auto; }
+  .check-container .login-box {
+    width: 25vw;
+    height: 25vw;
+    background-color: white; }
+  .check-container .join-box {
+    width: 25vw;
+    height: 25vw;
+    background-color: white; }
