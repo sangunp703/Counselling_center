@@ -24,15 +24,31 @@
       position: absolute;
       top: 6%;
       left: 5%;
-      width: 50%;
+      width: 55%;
       text-align: center; }
       .join-container .content .info h1 {
         font-size: 2vw;
         font-weight: bold; }
-      .join-container .content .info div {
-        margin: 2vw 0;
-        font-size: 1.5vw;
-        font-weight: bold; }
+      .join-container .content .info input {
+        all: unset;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 1vw auto;
+        width: 70%;
+        font-size: 1.2vw;
+        padding: 0.5vw;
+        border-radius: 5px; }
+        .join-container .content .info input::placeholder {
+          font-size: 1vw; }
+      .join-container .content .info .name {
+        display: block; }
+      .join-container .content .info .front {
+        width: 35%;
+        margin-right: 1vw; }
+      .join-container .content .info .back {
+        width: 35%;
+        margin-left: 1vw; }
+      .join-container .content .info .email {
+        display: block; }
     .join-container .content .profile {
       position: absolute;
       top: 6%;
@@ -47,7 +63,8 @@
       left: 50%;
       width: 45%;
       height: auto;
-      transform: translateX(-50%); }
+      transform: translateX(-50%);
+      transition-duration: 0.1s; }
     .join-container .content .apply-after {
       content: url(../../assets/svg/approved.svg);
       position: absolute;
@@ -56,5 +73,14 @@
       width: 45%;
       height: auto;
       transform: translateX(-50%);
+      z-index: -1;
       opacity: 0;
       transition-duration: 1s; }
+    .join-container .content .notice {
+      position: absolute;
+      bottom: 32%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      color: red;
+      font-weight: bold; }

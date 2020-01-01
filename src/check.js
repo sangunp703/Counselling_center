@@ -11,10 +11,17 @@ export default class Check extends Component {
       joinShow: false,
       loginShow: false
     }
+    this.jumpCallback = this.jumpCallback.bind(this) // 함수의 this를 본 요소에 바인딩
   }
 
   openJoinBox(e) {
     this.setState({ joinShow: true })
+  }
+
+  jumpCallback(jumpData) {
+    this.setState({
+      jump: jumpData
+    })
   }
 
   render() {
@@ -35,7 +42,7 @@ export default class Check extends Component {
             <img className='join-box' src='' alt='주민등록증' onClick={e => this.openJoinBox(e)}></img>
           </div>
         </div>
-        <Join show={this.state.joinShow} />
+        <Join show={this.state.joinShow} jump={this.jumpCallback} />
       </div>
     )
   }
