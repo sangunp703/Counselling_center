@@ -24,6 +24,17 @@ export default class Check extends Component {
     })
   }
 
+  partIn(e) {
+    e.currentTarget.parentNode.querySelectorAll('.part').forEach(element => {
+      element.classList.remove('active')
+    })
+    e.currentTarget.classList.add('active')
+  }
+
+  talkToSecurity(e) {
+    e.currentTarget.parentNode.querySelector('.guide').style.opacity = 1
+  }
+
   render() {
     if (this.state.jump) {
       return <Redirect to={this.state.jump} />
@@ -31,14 +42,17 @@ export default class Check extends Component {
     return (
       <div className='check-container'>
         <div className='partition'>
-          <div className='part'>
+          <div className='part' onMouseEnter={e => this.partIn(e)}>
             <div className='login-box'></div>
           </div>
-          <div className='part entrance'>
-            <div class='talk-box'>회원증이나 신분증을 보여주세요</div>
-            <img className='security' src='' alt='silhouette' />
+          <div className='part active' onMouseEnter={e => this.partIn(e)}>
+            <div className='guide'>
+              <span className='guide-login'>&lt; 로그인</span>
+              <span className='guide-join'>회원가입 &gt;</span>
+            </div>
+            <img className='security' src='' alt='silhouette' onClick={e => this.talkToSecurity(e)} />
           </div>
-          <div className='part'>
+          <div className='part' onMouseEnter={e => this.partIn(e)}>
             <img className='join-box' src='' alt='주민등록증' onClick={e => this.openJoinBox(e)}></img>
           </div>
         </div>

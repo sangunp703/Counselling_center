@@ -45,9 +45,12 @@ body {
   
   .shadow {
     fill: none;
-    stroke: #7f55ff;
+    stroke: #479f78;
     stroke-width: 30;
     filter: url(#dropshadow);
+  }
+  .red{
+    stroke: #b11d3d;
   }
   .way {
     fill: none;

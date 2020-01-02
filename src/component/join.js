@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../../style/css/join.css'
+import request from 'superagent'
 
 export default class Join extends Component {
   constructor(props) {
@@ -21,12 +22,14 @@ export default class Join extends Component {
     const notice = e.currentTarget.parentNode.querySelector('.notice')
     notice.style.display = 'block'
 
-    if (element === 'name') {
-      notice.innerHTML = '이름을 입력하세요'
-    } else if (element === 'id') {
-      notice.innerHTML = '주민등록번호를 입력하세요'
+    if (element === 'id') {
+      notice.innerHTML = '아이디를 입력하세요'
+    } else if (element === 'password') {
+      notice.innerHTML = '비밀번호를 입력하세요'
+    } else if (element === 'mismatch') {
+      notice.innerHTML = '비밀번호가 서로 다릅니다'
     } else {
-      notice.innerHTML = '이메일을 입력하세요'
+      notice.innerHTML = '올바른 이메일을 입력하세요'
     }
     apply.left = '48%'
     setTimeout(() => {
@@ -38,32 +41,50 @@ export default class Join extends Component {
   }
 
   subscription(e) {
-    const form = e.currentTarget.parentNode
-    const name = form.querySelector('.name').value
-    if (name === '') {
-      this.deny('name', e)
-      return
-    }
-    const front = form.querySelector('.front').value
-    const back = form.querySelector('.back').value
-    if (front === '' || back === '' || front.length !== 6 || back.length !== 7) {
+    const content = e.currentTarget.parentNode
+    const id = content.querySelector('.id').value
+    if (id === '') {
       this.deny('id', e)
       return
     }
-    const email = form.querySelector('.email').value
+    const pw = content.querySelector('.pw').value
+    const pwCheck = content.querySelector('.pwCheck').value
+    if (pw === '') {
+      this.deny('password', e)
+      return
+    }
+    if (pw !== pwCheck) {
+      this.deny('mismatch', e)
+      return
+    }
+    const email = content.querySelector('.email').value
     if (email === '' || !email.includes('@')) {
       this.deny('email', e)
       return
     }
 
-    const id = front + '-' + back
-    console.log(name + id + email)
-
-    const applyStyle = document.querySelector('.apply-after').style
+    const notice = content.querySelector('.notice')
+    notice.style.display = 'none'
+    const applyStyle = content.querySelector('.apply-after').style
 
     applyStyle.zIndex = '1'
     applyStyle.opacity = '1'
     applyStyle.bottom = '0%'
+
+    request
+      .post('/api/join')
+      .query({
+        id: id,
+        pw: pw,
+        email: email
+      })
+      .end((err, res) => {
+        if (err) {
+          return
+        }
+        console.log(res.body.result)
+      })
+
     setTimeout(() => {
       this.props.jump('/intro')
     }, 1500)
@@ -80,11 +101,11 @@ export default class Join extends Component {
         <div className='content'>
           <form className='info'>
             <h1>주민등록증</h1>
-            <input type='text' className='name' placeholder='이름' minLength='1' />
+            <input type='text' className='id' placeholder='ID' minLength='1' />
             <div>
-              <input type='text' className='front' placeholder='주민등록번호 앞' minLength='6' maxLength='6' />
+              <input type='password' className='pw' placeholder='비밀번호' minLength='1' />
               <span>-</span>
-              <input type='password' className='back' placeholder='주민등록번호 뒤' minLength='7' maxLength='7' />
+              <input type='password' className='pwCheck' placeholder='비밀번호 확인' minLength='1' />
             </div>
             <input type='email' className='email' placeholder='이메일' minLength='1' />
           </form>

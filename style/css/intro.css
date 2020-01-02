@@ -38,9 +38,12 @@ body {
 
 .intro-container .shadow {
   fill: none;
-  stroke: #7f55ff;
+  stroke: #479f78;
   stroke-width: 30;
   filter: url(#dropshadow); }
+
+.intro-container .red {
+  stroke: #b11d3d; }
 
 .intro-container .way {
   fill: none;
