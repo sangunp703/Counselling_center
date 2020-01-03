@@ -28,34 +28,38 @@
       opacity: 1;
     }
 
-    .guide {
+    .guide-login {
       position: absolute;
       top: 50%;
+      left: 0%;
       transform: translateY(-50%);
-      width: 100%;
-      opacity: 0;
-      transition-duration: 1s;
       font-size: 1vw;
       font-weight: bold;
       text-align: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      width: 6vw;
+      border-radius: 0.5vw;
+      padding: 0.5vw;
+      margin: 0.5vw;
+      opacity: 0;
+      transition-duration: 1s;
+    }
 
-      .guide-login {
-        float: left;
-        background-color: rgba(255, 255, 255, 0.5);
-        width: 6vw;
-        border-radius: 0.5vw;
-        padding: 0.5vw;
-        margin: 0.5vw;
-      }
-
-      .guide-join {
-        float: right;
-        background-color: rgba(255, 255, 255, 0.5);
-        width: 6vw;
-        border-radius: 0.5vw;
-        padding: 0.5vw;
-        margin: 0.5vw;
-      }
+    .guide-join {
+      position: absolute;
+      top: 50%;
+      right: 0%;
+      transform: translateY(-50%);
+      font-size: 1vw;
+      font-weight: bold;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      width: 6vw;
+      border-radius: 0.5vw;
+      padding: 0.5vw;
+      margin: 0.5vw;
+      opacity: 0;
+      transition-duration: 1s;
     }
 
     .security {
@@ -74,9 +78,9 @@
     }
 
     .login-box {
+      content: url(../../assets/jpg/membership-card-sample.png);
       width: 25vw;
-      height: 25vw;
-      background-color: white;
+      height: 16.25vw;
       cursor: pointer;
       box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.75);
       transition-duration: 1s;
@@ -87,7 +91,7 @@
     }
 
     .join-box {
-      content: url(../../assets/jpg/sample_identity_card.png);
+      content: url(../../assets/jpg/identity-card-sample.png);
       width: 25vw;
       height: auto;
       border-radius: 5px;

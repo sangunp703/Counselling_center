@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css?family=Gothic+A1&display=swap';
+
 .join-container {
   position: fixed;
   top: 0;
@@ -19,10 +21,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url(../../assets/jpg/identity_card.png);
+    background-image: url(../../assets/jpg/identity-card.png);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 5px;
+    font-family: 'Gothic A1', sans-serif;
 
     .info {
       position: absolute;
@@ -86,7 +89,7 @@
     }
 
     .apply-after {
-      content: url(../../assets/svg/approved.svg);
+      content: url(../../assets/svg/approved-red.svg);
       position: absolute;
       bottom: 50%;
       left: 50%;
@@ -107,5 +110,44 @@
       color: red;
       font-weight: bold;
     }
+
+    //// V sample style V
+    // .info-sample {
+    //   position: absolute;
+    //   top: 6%;
+    //   left: 5%;
+    //   width: 55%;
+    //   text-align: center;
+
+    //   .title-sample {
+    //     font-size: 2vw;
+    //     font-weight: bold;
+    //   }
+
+    //   div {
+    //     margin: 0 auto;
+    //     margin-bottom: 2.3vw;
+    //     width: 70%;
+    //     font-size: 1.5vw;
+    //     font-weight: 600;
+    //   }
+    // }
+    // .profile-sample {
+    //   position: absolute;
+    //   top: 6%;
+    //   right: 5%;
+    //   content: url(../../assets/svg/profile.svg);
+    //   width: 35%;
+    //   height: auto;
+    // }
+    // .apply-sample {
+    //   content: url(../../assets/svg/approved-red.svg);
+    //   position: absolute;
+    //   bottom: 0%;
+    //   left: 50%;
+    //   width: 45%;
+    //   height: auto;
+    //   transform: translateX(-50%);
+    // }
   }
 }
