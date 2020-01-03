@@ -1,0 +1,35 @@
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  background: url(../../assets/jpg/bar.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  .layout-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    z-index: 5;
+    background: linear-gradient(315deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 1) 100%);
+  }
+  .layout-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    z-index: 5;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 1) 100%);
+  }
+  .table {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    background: url(../../assets/jpg/table.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+}

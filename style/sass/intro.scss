@@ -1,9 +1,10 @@
 @import 'https://fonts.googleapis.com/css?family=Nanum+Brush+Script&display=swap';
 
-body {
+.intro-container {
+  width: 100vw;
+  height: 100vh;
   background-color: #222;
-}
-.intro-container{
+
   .intro-box {
     width: 900px;
     position: absolute;
@@ -23,7 +24,7 @@ body {
       box-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 10px #7f55ff inset, 0 0 20px #7f55ff inset, 0 0 40px #7f55ff inset, 0 0 80px #7f55ff inset;
     }
   }
-  
+
   .title {
     font-weight: bold;
     font-size: 4em;
@@ -32,24 +33,24 @@ body {
     filter: blur(0px);
     text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
   }
-  
+
   .title span {
     margin: 20px;
     line-height: 100px;
   }
-  
+
   .image {
     width: 400px;
     height: 400px;
   }
-  
+
   .shadow {
     fill: none;
     stroke: #479f78;
     stroke-width: 30;
     filter: url(#dropshadow);
   }
-  .red{
+  .red {
     stroke: #b11d3d;
   }
   .way {
@@ -58,4 +59,3 @@ body {
     stroke-width: 10;
   }
 }
-

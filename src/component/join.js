@@ -91,7 +91,7 @@ export default class Join extends Component {
           applyStyle.bottom = '0%'
 
           setTimeout(() => {
-            this.props.jump('/intro')
+            this.props.jump('/main')
           }, 1500)
         }
       })

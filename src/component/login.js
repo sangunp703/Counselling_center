@@ -76,7 +76,7 @@ export default class Login extends Component {
           applyStyle.bottom = '5%'
 
           setTimeout(() => {
-            this.props.jump('/intro')
+            this.props.jump('/main')
           }, 1500)
         }
       })

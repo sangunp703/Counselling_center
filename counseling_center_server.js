@@ -18,6 +18,7 @@ app.use(bodyParser.json())
 app.use('/', express.static('./public'))
 app.use('/intro', express.static('./public'))
 app.use('/check', express.static('./public'))
+app.use('/main', express.static('./public'))
 
 const database = require('./server/database')(app, User)
 
