@@ -28,7 +28,7 @@ export default class Menu extends Component {
               <div className='alcohol'>
                 <img className='bottle' src='' alt='bottle' />
                 <img className='glass' src='' alt='glass' />
-                <span className='reply-count'>X 1</span>
+                <span className='reply-count'>X 0</span>
               </div>
               <div className='worry'>
                 <h2 className='title'>it's sad</h2>

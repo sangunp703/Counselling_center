@@ -17,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url(../../assets/jpg/identity-card.png);
+    background-image: url(../../assets/image/identity-card.png);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 5px;

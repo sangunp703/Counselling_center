@@ -14,6 +14,91 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 50%;
     height: 50%;
-    background-color: white; }
+    background-image: url(../../assets/image/leather.jpg);
+    background-size: contain;
+    border-radius: 10px; }
+  .menu-container .menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 98%;
+    height: 98%;
+    background-image: url(../../assets/image/menu-bgi.png);
+    background-size: 100% 100%;
+    text-align: center;
+    color: #6e482f; }
+    .menu-container .menu h1 {
+      font-size: 2vw;
+      font-weight: bold;
+      margin: 1vw 0; }
+  .menu-container .content {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer; }
+    .menu-container .content:hover {
+      background-color: rgba(255, 255, 255, 0.3); }
+    .menu-container .content .alcohol {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding-bottom: 3%;
+      width: 30%;
+      height: 80%; }
+      .menu-container .content .alcohol .bottle {
+        content: url(../../assets/image/soju.png);
+        display: inline-block;
+        width: 30%;
+        height: auto; }
+      .menu-container .content .alcohol .glass {
+        content: url(../../assets/image/soju-glass.png);
+        display: inline-block;
+        width: 15%;
+        height: auto; }
+      .menu-container .content .alcohol .reply-count {
+        font-size: 1.5vw;
+        font-weight: bold; }
+    .menu-container .content .worry {
+      width: 60%;
+      height: 90%;
+      border-left: 2px #7e583f dashed; }
+      .menu-container .content .worry .title {
+        font-size: 2vw;
+        font-weight: bold;
+        margin-bottom: 2vw; }
+      .menu-container .content .worry .story {
+        font-size: 1.5vw;
+        color: #8e684f;
+        text-align: left;
+        padding: 0 1vw; }
+  .menu-container .arrow-back {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    content: url(../../assets/image/back.png);
+    width: 2vw;
+    height: 5vw;
+    cursor: pointer; }
+    .menu-container .arrow-back:hover {
+      content: url(../../assets/image/back-white.png); }
+  .menu-container .arrow-next {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    content: url(../../assets/image/next.png);
+    width: 2vw;
+    height: 5vw;
+    cursor: pointer; }
+    .menu-container .arrow-next:hover {
+      content: url(../../assets/image/next-white.png); }

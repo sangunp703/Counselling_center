@@ -17,8 +17,115 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 50%;
     height: 50%;
-    background-color: white;
+    background-image: url(../../assets/image/leather.jpg);
+    background-size: contain;
+    border-radius: 10px;
+  }
+  .menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 98%;
+    height: 98%;
+    background-image: url(../../assets/image/menu-bgi.png);
+    background-size: 100% 100%;
+    text-align: center;
+    color: #6e482f;
+
+    h1 {
+      font-size: 2vw;
+      font-weight: bold;
+      margin: 1vw 0;
+    }
+  }
+  .content {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .alcohol {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding-bottom: 3%;
+      width: 30%;
+      height: 80%;
+
+      .bottle {
+        content: url(../../assets/image/soju.png);
+        display: inline-block;
+        width: 30%;
+        height: auto;
+      }
+
+      .glass {
+        content: url(../../assets/image/soju-glass.png);
+        display: inline-block;
+        width: 15%;
+        height: auto;
+      }
+
+      .reply-count {
+        font-size: 1.5vw;
+        font-weight: bold;
+      }
+    }
+    .worry {
+      width: 60%;
+      height: 90%;
+      border-left: 2px #7e583f dashed;
+
+      .title {
+        font-size: 2vw;
+        font-weight: bold;
+        margin-bottom: 2vw;
+      }
+      .story {
+        font-size: 1.5vw;
+        color: #8e684f;
+        text-align: left;
+        padding: 0 1vw;
+      }
+    }
+  }
+  .arrow-back {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    content: url(../../assets/image/back.png);
+    width: 2vw;
+    height: 5vw;
+    cursor: pointer;
+    &:hover {
+      content: url(../../assets/image/back-white.png);
+    }
+  }
+  .arrow-next {
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    content: url(../../assets/image/next.png);
+    width: 2vw;
+    height: 5vw;
+    cursor: pointer;
+    &:hover {
+      content: url(../../assets/image/next-white.png);
+    }
   }
 }
