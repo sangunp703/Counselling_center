@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../style/css/main.css'
 import Menu from './component/menu'
+import request from 'superagent'
 
 export default class Main extends Component {
   constructor(props) {
@@ -11,6 +12,28 @@ export default class Main extends Component {
       show: 'none'
     }
     this.showCallback = this.showCallback.bind(this)
+  }
+
+  componentDidMount() {
+    request
+      .get('/api/check')
+      .query({
+        id: window.sessionStorage.id,
+        token: window.sessionStorage.token
+      })
+      .end((err, res) => {
+        if (err) {
+          console.log(res.body.msg)
+          alert('세션이 만료되었습니다.')
+          this.setState({ jump: '/check' })
+          return
+        }
+        if (res.body.msg === 'denied') {
+          alert('세션이 만료되었습니다.')
+          this.setState({ jump: '/check' })
+          return
+        }
+      })
   }
 
   showCallback(showData) {
@@ -34,7 +57,7 @@ export default class Main extends Component {
         <img className='bartender' src='' alt='bartender' />
         <img className='table' src='' alt='table'></img>
         <div className='menu' onClick={e => this.openMenuBox(e)}>
-          MENU
+          메 뉴
         </div>
         <Menu show={this.state.show} showCallback={this.showCallback} />
       </div>

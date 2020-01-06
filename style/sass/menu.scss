@@ -18,8 +18,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
-    height: 50%;
-    background-image: url(../../assets/image/leather.jpg);
+    height: 60%;
+    background-image: url(../../public/assets/image/leather.jpg);
     background-size: contain;
     border-radius: 10px;
   }
@@ -30,12 +30,12 @@
     transform: translate(-50%, -50%);
     width: 98%;
     height: 98%;
-    background-image: url(../../assets/image/menu-bgi.png);
+    background-image: url(../../public/assets/image/menu-bgi.png);
     background-size: 100% 100%;
     text-align: center;
     color: #6e482f;
 
-    h1 {
+    .type {
       font-size: 2vw;
       font-weight: bold;
       margin: 1vw 0;
@@ -49,7 +49,7 @@
     width: 85%;
     height: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     cursor: pointer;
 
@@ -61,21 +61,19 @@
       display: flex;
       justify-content: space-around;
       align-items: flex-end;
-      padding-bottom: 3%;
+      padding-bottom: 5%;
       width: 30%;
       height: 80%;
 
       .bottle {
-        content: url(../../assets/image/soju.png);
         display: inline-block;
-        width: 30%;
+        width: 35%;
         height: auto;
       }
 
       .glass {
-        content: url(../../assets/image/soju-glass.png);
         display: inline-block;
-        width: 15%;
+        width: 20%;
         height: auto;
       }
 
@@ -88,6 +86,8 @@
       width: 60%;
       height: 90%;
       border-left: 2px #7e583f dashed;
+      padding: 0 1vw;
+      text-align: left;
 
       .title {
         font-size: 2vw;
@@ -97,8 +97,6 @@
       .story {
         font-size: 1.5vw;
         color: #8e684f;
-        text-align: left;
-        padding: 0 1vw;
       }
     }
   }
@@ -107,12 +105,12 @@
     top: 50%;
     left: 1%;
     transform: translateY(-50%);
-    content: url(../../assets/image/back.png);
+    content: url(../../public/assets/image/back.png);
     width: 2vw;
     height: 5vw;
     cursor: pointer;
     &:hover {
-      content: url(../../assets/image/back-white.png);
+      content: url(../../public/assets/image/back-white.png);
     }
   }
   .arrow-next {
@@ -120,12 +118,12 @@
     top: 50%;
     right: 1%;
     transform: translateY(-50%);
-    content: url(../../assets/image/next.png);
+    content: url(../../public/assets/image/next.png);
     width: 2vw;
     height: 5vw;
     cursor: pointer;
     &:hover {
-      content: url(../../assets/image/next-white.png);
+      content: url(../../public/assets/image/next-white.png);
     }
   }
 }

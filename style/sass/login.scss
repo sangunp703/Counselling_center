@@ -21,7 +21,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url(../../assets/image/membership-card.png);
+    background-image: url(../../public/assets/image/membership-card.png);
     background-size: 100% 100%;
     color: #d6a039;
     text-align: center;
@@ -64,7 +64,7 @@
     }
 
     .apply {
-      content: url(../../assets/svg/approved-black.svg);
+      content: url(../../public/assets/svg/approved-black.svg);
       position: absolute;
       bottom: 5%;
       right: 5%;
@@ -74,7 +74,7 @@
     }
 
     .apply-after {
-      content: url(../../assets/svg/approved-yellow.svg);
+      content: url(../../public/assets/svg/approved-yellow.svg);
       position: absolute;
       bottom: 50%;
       right: 5%;
@@ -112,7 +112,7 @@
     //   font-size: 1.2vw;
     // }
     // .stamp-temp {
-    //   content: url(../../assets/svg/approved-yellow.svg);
+    //   content: url(../../public/assets/svg/approved-yellow.svg);
     //   position: absolute;
     //   bottom: 5%;
     //   right: 5%;

@@ -17,7 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url(../../assets/image/identity-card.png);
+    background-image: url(../../public/assets/image/identity-card.png);
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 5px;
@@ -55,11 +55,11 @@
       position: absolute;
       top: 6%;
       right: 5%;
-      content: url(../../assets/svg/profile.svg);
+      content: url(../../public/assets/svg/profile.svg);
       width: 35%;
       height: auto; }
     .join-container .content .apply {
-      content: url(../../assets/svg/approved-black.svg);
+      content: url(../../public/assets/svg/approved-black.svg);
       position: absolute;
       bottom: 0%;
       left: 50%;
@@ -68,7 +68,7 @@
       transform: translateX(-50%);
       transition-duration: 0.1s; }
     .join-container .content .apply-after {
-      content: url(../../assets/svg/approved-red.svg);
+      content: url(../../public/assets/svg/approved-red.svg);
       position: absolute;
       bottom: 50%;
       left: 50%;

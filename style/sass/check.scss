@@ -2,7 +2,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: url(../../assets/image/entrance.jpg);
+  background: url(../../public/assets/image/entrance.jpg);
   background-size: 100vw 100vh;
 
   .partition {
@@ -63,7 +63,7 @@
     }
 
     .security {
-      content: url(../../assets/image/security.png);
+      content: url(../../public/assets/image/security.png);
       width: 18vw;
       height: auto;
       background-color: rgba(255, 255, 255, 0);
@@ -78,7 +78,7 @@
     }
 
     .login-box {
-      content: url(../../assets/image/membership-card-sample.png);
+      content: url(../../public/assets/image/membership-card-sample.png);
       width: 25vw;
       height: 16.25vw;
       cursor: pointer;
@@ -91,7 +91,7 @@
     }
 
     .join-box {
-      content: url(../../assets/image/identity-card-sample.png);
+      content: url(../../public/assets/image/identity-card-sample.png);
       width: 25vw;
       height: auto;
       border-radius: 5px;

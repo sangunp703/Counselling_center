@@ -82,6 +82,9 @@ export default class Join extends Component {
           this.deny('exist', content)
           return
         } else {
+          window.sessionStorage['id'] = id
+          window.sessionStorage['token'] = res.body.token
+
           const notice = content.querySelector('.notice')
           notice.style.display = 'none'
           const applyStyle = content.querySelector('.apply-after').style
