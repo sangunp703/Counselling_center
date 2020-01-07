@@ -7,11 +7,13 @@ module.exports = function(app, User, Content) {
     hashsum.update(pw + salt)
     return hashsum.digest('hex')
   }
+
   // 인증 토큰 생성
   getAuthToken = userid => {
     const time = new Date().getTime()
     return getHash(`${userid}:${time}`)
   }
+
   // 인증 토큰 확인
   app.get('/api/check', (req, res) => {
     // DB에서 해당 유저 찾기
@@ -22,7 +24,7 @@ module.exports = function(app, User, Content) {
         return
       }
       if (result) {
-        // 유저 발견시 DB의 토큰과 저장소의 토큰 비교
+        // 유저 발견시 DB의 토큰과 세션의 토큰 비교
         if (result.token && result.token === req.query.token) {
           res.json({ msg: 'approved' })
           return
@@ -109,6 +111,23 @@ module.exports = function(app, User, Content) {
         }
       }
       res.json({ msg: 'not exist' })
+    })
+  })
+
+  app.post('/api/write', (req, res) => {
+    var content = new Content()
+    content.author = req.query.id
+    content.title = req.query.title
+    content.story = req.query.story
+    content.type = req.query.type
+    content.reply = []
+    content.save(err => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      res.json({ msg: 'insert complete' })
     })
   })
 }

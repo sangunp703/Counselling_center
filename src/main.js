@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../style/css/main.css'
-import Menu from './component/menu'
 import request from 'superagent'
+import Menu from './component/menu'
+import Glass from './component/glass'
+import Write from './component/write'
 
 export default class Main extends Component {
   constructor(props) {
@@ -23,7 +25,6 @@ export default class Main extends Component {
       })
       .end((err, res) => {
         if (err) {
-          console.log(res.body.msg)
           alert('세션이 만료되었습니다.')
           this.setState({ jump: '/check' })
           return
@@ -60,6 +61,8 @@ export default class Main extends Component {
           메 뉴
         </div>
         <Menu show={this.state.show} showCallback={this.showCallback} />
+        <Glass show={this.state.show} showCallback={this.showCallback} />
+        <Write show={this.state.show} showCallback={this.showCallback} />
       </div>
     )
   }

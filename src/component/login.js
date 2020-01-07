@@ -60,7 +60,6 @@ export default class Login extends Component {
       })
       .end((err, res) => {
         if (err) {
-          console.log(res.body.msg)
           return
         }
         if (res.body.msg === 'not exist') {

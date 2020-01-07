@@ -2,27 +2,43 @@ import React, { Component } from 'react'
 import '../../style/css/menu.css'
 import request from 'superagent'
 
+const alcohols = ['soju', 'beer', 'makgeolli', 'wine', 'champagne', 'whiskey']
+
 export default class Menu extends Component {
   constructor(props) {
     super(props)
     this.state = {
       index: 0
     }
+    this.showWrite = this.showWrite.bind(this)
+    this.showGlass = this.showGlass.bind(this)
+  }
+
+  showWrite() {
+    window.sessionStorage.type = alcohols[this.state.index]
+    this.props.showCallback('write')
+  }
+
+  showGlass() {
+    window.sessionStorage.type = alcohols[this.state.index]
+    this.props.showCallback('glass')
   }
 
   componentDidUpdate() {
     if (this.props.show === 'menu') {
       document.querySelector('.menu-container').style.display = 'block'
+    } else {
+      document.querySelector('.menu-container').style.display = 'none'
     }
     const menu_container = document.querySelector('.menu-container')
     const type = menu_container.querySelector('.type')
+    const content = menu_container.querySelector('.content')
     const worry = menu_container.querySelector('.worry')
     const bottle = menu_container.querySelector('.bottle')
     const glass = menu_container.querySelector('.glass')
     const reply_count = menu_container.querySelector('.reply-count')
     const title = worry.querySelector('.title')
     const story = worry.querySelector('.story')
-    const alcohols = ['soju', 'beer', 'makgeolli', 'wine', 'champagne', 'whiskey']
     const alcoholsType = ['소 주', '맥 주', '막 걸 리', '와 인', '샴 페 인', '위 스 키']
 
     type.innerHTML = alcoholsType[this.state.index]
@@ -36,11 +52,20 @@ export default class Menu extends Component {
         id: 'sangunp703'
       })
       .end((err, res) => {
+        if (err) {
+          return
+        }
         if (res.body.msg === 'not exist') {
           worry.style.display = 'none'
           reply_count.style.display = 'none'
+          content.removeEventListener('click', this.showGlass)
+          content.removeEventListener('click', this.showWrite)
+          content.addEventListener('click', this.showWrite)
           return
         }
+        content.removeEventListener('click', this.showGlass)
+        content.removeEventListener('click', this.showWrite)
+        content.addEventListener('click', this.showGlass)
         worry.style.display = 'block'
         reply_count.style.display = 'block'
         reply_count.innerHTML = 'X ' + res.body.reply_count
@@ -51,7 +76,6 @@ export default class Menu extends Component {
 
   closeBox(e) {
     this.props.showCallback('none')
-    e.currentTarget.parentNode.style.display = 'none'
   }
 
   previousMenu(e) {
