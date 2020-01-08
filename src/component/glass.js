@@ -7,6 +7,11 @@ export default class Write extends Component {
     super(props)
   }
 
+  glassSelect(num) {
+    window.sessionStorage.reply_num = num
+    this.props.showCallback('reply')
+  }
+
   closeBox(e) {
     this.props.showCallback('menu')
   }
@@ -33,6 +38,7 @@ export default class Write extends Component {
     span.innerHTML = num
     div.appendChild(img)
     div.appendChild(span)
+    div.addEventListener('click', this.glassSelect.bind(this, num))
 
     return div
   }
@@ -40,7 +46,7 @@ export default class Write extends Component {
   make10Div() {
     const divs = []
     request
-      .get('/api/getReply')
+      .get('/api/getReplyCount')
       .query({
         id: window.sessionStorage.id,
         type: window.sessionStorage.type

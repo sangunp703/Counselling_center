@@ -5,6 +5,7 @@ import request from 'superagent'
 import Menu from './component/menu'
 import Glass from './component/glass'
 import Write from './component/write'
+import Reply from './component/reply'
 
 export default class Main extends Component {
   constructor(props) {
@@ -63,6 +64,7 @@ export default class Main extends Component {
         <Menu show={this.state.show} showCallback={this.showCallback} />
         <Glass show={this.state.show} showCallback={this.showCallback} />
         <Write show={this.state.show} showCallback={this.showCallback} />
+        <Reply show={this.state.show} showCallback={this.showCallback} />
       </div>
     )
   }

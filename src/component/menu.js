@@ -27,51 +27,51 @@ export default class Menu extends Component {
   componentDidUpdate() {
     if (this.props.show === 'menu') {
       document.querySelector('.menu-container').style.display = 'block'
+      const menu_container = document.querySelector('.menu-container')
+      const type = menu_container.querySelector('.type')
+      const content = menu_container.querySelector('.content')
+      const worry = menu_container.querySelector('.worry')
+      const bottle = menu_container.querySelector('.bottle')
+      const glass = menu_container.querySelector('.glass')
+      const reply_count = menu_container.querySelector('.reply-count')
+      const title = worry.querySelector('.title')
+      const story = worry.querySelector('.story')
+      const alcoholsType = ['소 주', '맥 주', '막 걸 리', '와 인', '샴 페 인', '위 스 키']
+
+      type.innerHTML = alcoholsType[this.state.index]
+      bottle.src = '/assets/image/' + alcohols[this.state.index] + '.png'
+      glass.src = '/assets/image/' + alcohols[this.state.index] + '-glass.png'
+
+      request
+        .get('/api/getMyWorry')
+        .query({
+          type: this.state.index,
+          id: 'sangunp703'
+        })
+        .end((err, res) => {
+          if (err) {
+            return
+          }
+          if (res.body.msg === 'not exist') {
+            worry.style.display = 'none'
+            reply_count.style.display = 'none'
+            content.removeEventListener('click', this.showGlass)
+            content.removeEventListener('click', this.showWrite)
+            content.addEventListener('click', this.showWrite)
+            return
+          }
+          content.removeEventListener('click', this.showGlass)
+          content.removeEventListener('click', this.showWrite)
+          content.addEventListener('click', this.showGlass)
+          worry.style.display = 'block'
+          reply_count.style.display = 'block'
+          reply_count.innerHTML = 'X ' + res.body.reply_count
+          title.innerHTML = res.body.title
+          story.innerHTML = res.body.story
+        })
     } else {
       document.querySelector('.menu-container').style.display = 'none'
     }
-    const menu_container = document.querySelector('.menu-container')
-    const type = menu_container.querySelector('.type')
-    const content = menu_container.querySelector('.content')
-    const worry = menu_container.querySelector('.worry')
-    const bottle = menu_container.querySelector('.bottle')
-    const glass = menu_container.querySelector('.glass')
-    const reply_count = menu_container.querySelector('.reply-count')
-    const title = worry.querySelector('.title')
-    const story = worry.querySelector('.story')
-    const alcoholsType = ['소 주', '맥 주', '막 걸 리', '와 인', '샴 페 인', '위 스 키']
-
-    type.innerHTML = alcoholsType[this.state.index]
-    bottle.src = '/assets/image/' + alcohols[this.state.index] + '.png'
-    glass.src = '/assets/image/' + alcohols[this.state.index] + '-glass.png'
-
-    request
-      .get('/api/getMyWorry')
-      .query({
-        type: this.state.index,
-        id: 'sangunp703'
-      })
-      .end((err, res) => {
-        if (err) {
-          return
-        }
-        if (res.body.msg === 'not exist') {
-          worry.style.display = 'none'
-          reply_count.style.display = 'none'
-          content.removeEventListener('click', this.showGlass)
-          content.removeEventListener('click', this.showWrite)
-          content.addEventListener('click', this.showWrite)
-          return
-        }
-        content.removeEventListener('click', this.showGlass)
-        content.removeEventListener('click', this.showWrite)
-        content.addEventListener('click', this.showGlass)
-        worry.style.display = 'block'
-        reply_count.style.display = 'block'
-        reply_count.innerHTML = 'X ' + res.body.reply_count
-        title.innerHTML = res.body.title
-        story.innerHTML = res.body.story
-      })
   }
 
   closeBox(e) {

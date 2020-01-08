@@ -131,7 +131,7 @@ module.exports = function(app, User, Content) {
     })
   })
 
-  app.get('/api/getReply', (req, res) => {
+  app.get('/api/getReplyCount', (req, res) => {
     Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
       if (err) {
         console.error(err)
@@ -140,6 +140,32 @@ module.exports = function(app, User, Content) {
       }
       if (result.length !== 0) {
         res.json({ count: result.reply.length })
+      }
+    })
+  })
+
+  app.get('/api/getReply', (req, res) => {
+    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result.length !== 0) {
+        res.json({ reply: result.reply[req.query.num - 1] })
+      }
+    })
+  })
+
+  app.get('/api/getContent', (req, res) => {
+    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result.length !== 0) {
+        res.json({ title: result.title, story: result.story })
       }
     })
   })
