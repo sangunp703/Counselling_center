@@ -130,4 +130,17 @@ module.exports = function(app, User, Content) {
       res.json({ msg: 'insert complete' })
     })
   })
+
+  app.get('/api/getReply', (req, res) => {
+    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result.length !== 0) {
+        res.json({ count: result.reply.length })
+      }
+    })
+  })
 }

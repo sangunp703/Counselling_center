@@ -19,7 +19,7 @@
     width: 60vw;
     height: 60vh;
     background-color: black; }
-    .glass-container .content .grid {
+    .glass-container .content .scroll {
       position: absolute;
       top: 35%;
       left: 50%;
@@ -27,19 +27,41 @@
       width: 90%;
       height: 70%;
       margin: 5% auto;
+      border: 1px red solid;
+      overflow-y: scroll;
+      padding: 1vw;
+      -ms-overflow-style: none; }
+      .glass-container .content .scroll::-webkit-scrollbar {
+        display: none; }
+    .glass-container .content .grid {
+      position: relative;
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      grid-gap: 2vw;
-      border: 1px red solid;
-      padding: 1vw;
-      overflow-y: scroll;
-      -ms-overflow-style: none; }
-      .glass-container .content .grid::-webkit-scrollbar {
-        display: none; }
+      grid-gap: 2vw; }
       .glass-container .content .grid div {
+        position: relative;
         width: 100%;
         height: 20vh;
-        background-color: white; }
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.9); }
+        .glass-container .content .grid div:hover {
+          background-color: rgba(255, 255, 255, 0.5); }
+        .glass-container .content .grid div img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 75%;
+          width: auto; }
+        .glass-container .content .grid div span {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 2rem;
+          font-weight: bold; }
     .glass-container .content .scroll-img {
       position: absolute;
       bottom: 5%;
