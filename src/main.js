@@ -6,6 +6,7 @@ import Menu from './component/menu'
 import Glass from './component/glass'
 import Write from './component/write'
 import Reply from './component/reply'
+import Talk from './component/talk'
 
 export default class Main extends Component {
   constructor(props) {
@@ -48,6 +49,10 @@ export default class Main extends Component {
     this.setState({ show: 'menu' })
   }
 
+  openTalkBox(e) {
+    this.setState({ show: 'talk' })
+  }
+
   render() {
     if (this.state.jump) {
       return <Redirect to={this.state.jump} />
@@ -56,7 +61,7 @@ export default class Main extends Component {
       <div className='main-container'>
         <div className='layout-left'></div>
         <div className='layout-right'></div>
-        <img className='bartender' src='' alt='bartender' />
+        <img className='bartender' src='' alt='bartender' onClick={e => this.openTalkBox(e)} />
         <img className='table' src='' alt='table'></img>
         <div className='menu' onClick={e => this.openMenuBox(e)}>
           메 뉴
@@ -65,6 +70,7 @@ export default class Main extends Component {
         <Glass show={this.state.show} showCallback={this.showCallback} />
         <Write show={this.state.show} showCallback={this.showCallback} />
         <Reply show={this.state.show} showCallback={this.showCallback} />
+        <Talk show={this.state.show} showCallback={this.showCallback} />
       </div>
     )
   }

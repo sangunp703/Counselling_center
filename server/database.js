@@ -169,4 +169,19 @@ module.exports = function(app, User, Content) {
       }
     })
   })
+  app.get('/api/getRandomContent', (req, res) => {
+    Content.find({ author: { $not: { $eq: req.query.id } } }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result.length !== 0) {
+        const num = Math.floor(Math.random() * result.length)
+        res.json({ title: result[num].title, story: result[num].story })
+      } else {
+        res.json({ title: '', story: '' })
+      }
+    })
+  })
 }

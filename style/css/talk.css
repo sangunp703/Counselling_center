@@ -1,0 +1,67 @@
+.talk-container {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0; }
+  .talk-container .layout {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .talk-container .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 75vh;
+    background-color: white; }
+    .talk-container .content .scroll {
+      width: 95%;
+      height: 60%;
+      border: 1px solid #7f00ff;
+      overflow-y: scroll;
+      -ms-overflow-style: none;
+      margin: 0 auto;
+      margin-top: 3%; }
+      .talk-container .content .scroll::-webkit-scrollbar {
+        display: none; }
+      .talk-container .content .scroll .worry-box {
+        position: relative;
+        width: 100%; }
+        .talk-container .content .scroll .worry-box .title {
+          text-align: center;
+          font-size: 2rem; }
+        .talk-container .content .scroll .worry-box .story {
+          font-size: 1rem; }
+    .talk-container .content .reply-box {
+      position: relative;
+      width: 95%;
+      height: 30%;
+      border: 1px solid #7f00ff;
+      margin: 0 auto; }
+      .talk-container .content .reply-box .reply {
+        all: unset;
+        background-color: white;
+        width: 100%;
+        height: 80%; }
+      .talk-container .content .reply-box .submit {
+        all: unset;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        background-color: blue;
+        width: 10%;
+        height: 15%;
+        cursor: pointer; }
+      .talk-container .content .reply-box .change {
+        all: unset;
+        background-color: blue;
+        position: absolute;
+        right: 5%;
+        bottom: 0;
+        width: 10%;
+        height: 15%;
+        cursor: pointer; }

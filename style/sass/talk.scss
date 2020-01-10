@@ -1,0 +1,87 @@
+.talk-container {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  .layout {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 75vh;
+    background-color: white;
+
+    .scroll {
+      width: 95%;
+      height: 60%;
+      border: 1px solid #7f00ff;
+      overflow-y: scroll;
+      -ms-overflow-style: none;
+      margin: 0 auto;
+      margin-top: 3%;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .worry-box {
+        position: relative;
+        width: 100%;
+
+        .title {
+          text-align: center;
+          font-size: 2rem;
+        }
+        .story {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .reply-box {
+      position: relative;
+      width: 95%;
+      height: 30%;
+      border: 1px solid #7f00ff;
+      margin: 0 auto;
+
+      .reply {
+        all: unset;
+        background-color: white;
+        width: 100%;
+        height: 80%;
+      }
+      .submit {
+        all: unset;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        background-color: blue;
+        width: 10%;
+        height: 15%;
+        cursor: pointer;
+      }
+      .change {
+        all: unset;
+        background-color: blue;
+        position: absolute;
+        right: 5%;
+        bottom: 0;
+        width: 10%;
+        height: 15%;
+        cursor: pointer;
+      }
+    }
+  }
+}

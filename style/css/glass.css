@@ -8,9 +8,7 @@
   .glass-container .layout {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 3rem;
-    color: white; }
+    background-color: rgba(0, 0, 0, 0.5); }
   .glass-container .content {
     position: absolute;
     top: 50%;
@@ -60,7 +58,7 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          font-size: 2rem;
+          font-size: 5rem;
           font-weight: bold; }
     .glass-container .content .scroll-img {
       position: absolute;
