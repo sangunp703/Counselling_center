@@ -7,8 +7,8 @@ export default class Reply extends Component {
     super(props)
   }
 
-  closeBox(e) {
-    const worry = e.currentTarget.parentNode.querySelector('.worry')
+  closeBox() {
+    const worry = document.querySelector('.worry')
     // 글 상자 초기화
     if (worry.classList.contains('bottom')) {
       this.worryToggle()
@@ -81,26 +81,43 @@ export default class Reply extends Component {
     }, 1000)
   }
 
+  deleteReply() {
+    request
+      .post('/api/deleteReply')
+      .query({
+        author: window.sessionStorage.id,
+        type: window.sessionStorage.type,
+        index: window.sessionStorage.reply_num
+      })
+      .end((err, res) => {
+        if (err) {
+          return
+        }
+        this.closeBox()
+      })
+  }
+
   render() {
     return (
       <div className='reply-container'>
-        <div className='layout' onClick={e => this.closeBox(e)}></div>
+        <div className='layout' onClick={e => this.closeBox()}></div>
         <div className='content'>
           <div className='reply-box'>
             <pre className='reply'></pre>
+            <button className='delete-btn' type='button' onClick={e => this.deleteReply()}>
+              댓글 삭제
+            </button>
           </div>
-          <div className='worry-box'>
-            <div className='worry'>
-              <div className='worry-content'>
-                <h2 className='title'>제 목</h2>
-                <div className='story-box'>
-                  <pre className='story'>내 용</pre>
-                </div>
+          <div className='worry'>
+            <div className='worry-content'>
+              <h2 className='title'>제 목</h2>
+              <div className='story-box'>
+                <pre className='story'>내 용</pre>
               </div>
             </div>
-            <div className='arrow-box'>
-              <img className='arrow' src='' alt='arrow' />
-            </div>
+          </div>
+          <div className='arrow-box'>
+            <img className='arrow' src='' alt='arrow' />
           </div>
         </div>
       </div>

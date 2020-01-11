@@ -5,6 +5,9 @@ import request from 'superagent'
 export default class Talk extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      content: { author: '', type: '' }
+    }
   }
 
   closeBox(e) {
@@ -14,10 +17,12 @@ export default class Talk extends Component {
   componentDidUpdate() {
     if (this.props.show === 'talk') {
       document.querySelector('.talk-container').style.display = 'block'
-      this.randomPick()
     } else {
       document.querySelector('.talk-container').style.display = 'none'
     }
+  }
+  componentDidMount() {
+    this.randomPick()
   }
 
   randomPick() {
@@ -27,13 +32,39 @@ export default class Talk extends Component {
         id: window.sessionStorage.id
       })
       .end((err, res) => {
+        if (err) {
+          return
+        }
         const talk_container = document.querySelector('.talk-container')
         const title = talk_container.querySelector('.title')
         const story = talk_container.querySelector('.story')
 
         title.innerHTML = res.body.title
         story.innerHTML = res.body.story
+        this.setState({
+          content: { author: res.body.author, type: res.body.type }
+        })
       })
+  }
+
+  reply() {
+    const talk_container = document.querySelector('.talk-container')
+    const reply = talk_container.querySelector('.reply')
+    if (reply.value !== '') {
+      request
+        .post('/api/writeReply')
+        .query({
+          author: this.state.content.author,
+          type: this.state.content.type,
+          reply: reply.value
+        })
+        .end((err, res) => {
+          if (err) {
+            return
+          }
+          reply.value = ''
+        })
+    }
   }
 
   render() {
@@ -49,10 +80,10 @@ export default class Talk extends Component {
           </div>
           <div className='reply-box'>
             <textarea className='reply'></textarea>
-            <button className='submit' type='button'>
+            <button className='submit' type='button' onClick={e => this.reply()}>
               상담 완료
             </button>
-            <button className='change' type='button'>
+            <button className='change' type='button' onClick={e => this.randomPick()}>
               다른 대화
             </button>
           </div>

@@ -169,6 +169,7 @@ module.exports = function(app, User, Content) {
       }
     })
   })
+
   app.get('/api/getRandomContent', (req, res) => {
     Content.find({ author: { $not: { $eq: req.query.id } } }, (err, result) => {
       if (err) {
@@ -178,9 +179,70 @@ module.exports = function(app, User, Content) {
       }
       if (result.length !== 0) {
         const num = Math.floor(Math.random() * result.length)
-        res.json({ title: result[num].title, story: result[num].story })
+        res.json({ msg: 'complete', title: result[num].title, story: result[num].story, author: result[num].author, type: result[num].type })
       } else {
-        res.json({ title: '', story: '' })
+        res.json({ msg: 'fail', title: '', story: '', author: '', type: '' })
+      }
+    })
+  })
+
+  app.post('/api/writeReply', (req, res) => {
+    Content.findOne({ author: req.query.author, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result) {
+        result.reply.push(req.query.reply)
+        result.save(err => {
+          if (err) {
+            console.error(err)
+            res.json({ msg: 'DB error' })
+            return
+          }
+          res.json({ msg: 'update complete' })
+        })
+      } else {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+    })
+  })
+
+  app.post('/api/deleteContent', (req, res) => {
+    Content.remove({ author: req.query.author, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      res.json({ msg: 'delete complete' })
+    })
+  })
+
+  app.post('/api/deleteReply', (req, res) => {
+    Content.findOne({ author: req.query.author, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result) {
+        result.reply.splice(req.query.index - 1, 1)
+        result.save(err => {
+          if (err) {
+            console.error(err)
+            res.json({ msg: 'DB error' })
+            return
+          }
+          res.json({ msg: 'update complete' })
+        })
+      } else {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
       }
     })
   })

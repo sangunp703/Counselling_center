@@ -46,7 +46,7 @@ export default class Menu extends Component {
         .get('/api/getMyWorry')
         .query({
           type: this.state.index,
-          id: 'sangunp703'
+          id: window.sessionStorage.id
         })
         .end((err, res) => {
           if (err) {
@@ -102,6 +102,23 @@ export default class Menu extends Component {
     }
   }
 
+  deleteContent() {
+    request
+      .post('/api/deleteContent')
+      .query({
+        author: window.sessionStorage.id,
+        type: alcohols[this.state.index]
+      })
+      .end((err, res) => {
+        if (err) {
+          return
+        }
+        this.setState({
+          index: this.state.index
+        })
+      })
+  }
+
   render() {
     return (
       <div className='menu-container'>
@@ -120,6 +137,9 @@ export default class Menu extends Component {
                 <pre className='story'>blah blah</pre>
               </div>
             </div>
+            <button className='delete-btn' type='button' onClick={e => this.deleteContent(e)}>
+              버리기
+            </button>
             <img className='arrow-back' src='' alt='previous' onClick={e => this.previousMenu(e)} />
             <img className='arrow-next' src='' alt='next' onClick={e => this.nextMenu(e)} />
           </div>

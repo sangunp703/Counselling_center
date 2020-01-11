@@ -33,14 +33,14 @@
     .menu-container .menu .type {
       font-size: 2vw;
       font-weight: bold;
-      margin: 1vw 0; }
+      margin-top: 1.5vw; }
   .menu-container .content {
     position: absolute;
-    bottom: 5%;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 85%;
-    height: 80%;
+    height: 70%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -51,7 +51,6 @@
       display: flex;
       justify-content: space-around;
       align-items: flex-end;
-      padding-bottom: 5%;
       width: 30%;
       height: 80%; }
       .menu-container .content .alcohol .bottle {
@@ -78,6 +77,13 @@
       .menu-container .content .worry .story {
         font-size: 1.5vw;
         color: #8e684f; }
+  .menu-container .delete-btn {
+    all: unset;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white; }
   .menu-container .arrow-back {
     position: absolute;
     top: 50%;

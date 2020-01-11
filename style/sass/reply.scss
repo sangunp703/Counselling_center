@@ -22,7 +22,9 @@
     background-color: white;
 
     .reply-box {
-      position: relative;
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
     }
@@ -37,52 +39,51 @@
       border: 1px solid #7f00ff;
     }
 
-    .worry-box {
+    .delete-btn {
       position: absolute;
-      top: 0;
-      left: 0;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .worry {
+      position: relative;
       width: 100%;
-      height: 100%;
+      height: 0%;
+      transition-duration: 1s;
+      transition-timing-function: cubic-bezier(0, 1, 1, 0.9);
+      background-color: blue;
+    }
 
-      .worry {
-        position: relative;
-        width: 100%;
-        height: 0%;
-        transition-duration: 1s;
-        transition-timing-function: cubic-bezier(0, 1, 1, 0.9);
-        background-color: blue;
-      }
+    .bottom {
+      height: 90%;
+    }
 
-      .bottom {
-        height: 90%;
-      }
+    .worry-content {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      border: 1px solid #7f00ff;
+    }
 
-      .worry-content {
-        display: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        height: 80%;
-        border: 1px solid #7f00ff;
-      }
+    .arrow-box {
+      position: relative;
+      width: 100%;
+      height: 10%;
+      background-color: red;
+      cursor: pointer;
+    }
 
-      .arrow-box {
-        position: relative;
-        width: 100%;
-        height: 10%;
-        background-color: red;
-        cursor: pointer;
-      }
-
-      .arrow {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 1px solid #7f00ff;
-      }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #7f00ff;
     }
   }
 }
