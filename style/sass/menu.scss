@@ -100,12 +100,21 @@
     }
   }
 
-  .delete-btn {
-    all: unset;
+  .btn-box {
     position: absolute;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+  }
+
+  .edit-btn {
+    all: unset;
+    background-color: white;
+  }
+
+  .delete-btn {
+    all: unset;
     background-color: white;
   }
 

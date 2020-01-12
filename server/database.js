@@ -96,7 +96,7 @@ module.exports = function(app, User, Content) {
         res.json({ msg: 'DB error' })
         return
       }
-      if (result.length !== 0) {
+      if (result) {
         var no = true
         for (var i = 0; i < result.length; i++) {
           if (result[i].type === alcohols[req.query.type]) {
@@ -131,6 +131,28 @@ module.exports = function(app, User, Content) {
     })
   })
 
+  app.post('/api/edit', (req, res) => {
+    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result) {
+        result.title = req.query.title
+        result.story = req.query.story
+        result.save(err => {
+          if (err) {
+            console.error(err)
+            res.json({ msg: 'DB error' })
+            return
+          }
+          res.json({ msg: 'edit complete' })
+        })
+      }
+    })
+  })
+
   app.get('/api/getReplyCount', (req, res) => {
     Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
       if (err) {
@@ -138,7 +160,7 @@ module.exports = function(app, User, Content) {
         res.json({ msg: 'DB error' })
         return
       }
-      if (result.length !== 0) {
+      if (result) {
         res.json({ count: result.reply.length })
       }
     })
@@ -151,7 +173,7 @@ module.exports = function(app, User, Content) {
         res.json({ msg: 'DB error' })
         return
       }
-      if (result.length !== 0) {
+      if (result) {
         res.json({ reply: result.reply[req.query.num - 1] })
       }
     })
@@ -164,8 +186,10 @@ module.exports = function(app, User, Content) {
         res.json({ msg: 'DB error' })
         return
       }
-      if (result.length !== 0) {
-        res.json({ title: result.title, story: result.story })
+      if (result) {
+        res.json({ msg: 'complete', title: result.title, story: result.story })
+      } else {
+        res.json({ msg: 'fail' })
       }
     })
   })
@@ -177,7 +201,8 @@ module.exports = function(app, User, Content) {
         res.json({ msg: 'DB error' })
         return
       }
-      if (result.length !== 0) {
+      console.log(result)
+      if (result && result.length !== 0) {
         const num = Math.floor(Math.random() * result.length)
         res.json({ msg: 'complete', title: result[num].title, story: result[num].story, author: result[num].author, type: result[num].type })
       } else {

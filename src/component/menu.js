@@ -137,9 +137,15 @@ export default class Menu extends Component {
                 <pre className='story'>blah blah</pre>
               </div>
             </div>
-            <button className='delete-btn' type='button' onClick={e => this.deleteContent(e)}>
-              버리기
-            </button>
+            <div className='btn-box'>
+              <button className='edit-btn' type='button' onClick={e => this.showWrite(e)}>
+                글 수정
+              </button>
+              <button className='delete-btn' type='button' onClick={e => this.deleteContent(e)}>
+                글 삭제
+              </button>
+            </div>
+
             <img className='arrow-back' src='' alt='previous' onClick={e => this.previousMenu(e)} />
             <img className='arrow-next' src='' alt='next' onClick={e => this.nextMenu(e)} />
           </div>

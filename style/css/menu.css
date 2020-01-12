@@ -77,12 +77,17 @@
       .menu-container .content .worry .story {
         font-size: 1.5vw;
         color: #8e684f; }
-  .menu-container .delete-btn {
-    all: unset;
+  .menu-container .btn-box {
     position: absolute;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
+    display: flex; }
+  .menu-container .edit-btn {
+    all: unset;
+    background-color: white; }
+  .menu-container .delete-btn {
+    all: unset;
     background-color: white; }
   .menu-container .arrow-back {
     position: absolute;
