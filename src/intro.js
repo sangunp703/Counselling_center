@@ -9,8 +9,14 @@ export default class Intro extends Component {
       jump: ''
     }
   }
-  enter(e) {
+  enter() {
     this.setState({ jump: '/check' })
+  }
+  animationEnd(){
+    const intro_container = document.querySelector('.intro-container')
+    const intro_box = intro_container.querySelector('.intro-box')
+    intro_box.addEventListener('click', this.enter.bind(this))
+    intro_box.style.cursor = 'pointer'
   }
   render() {
     if (this.state.jump) {
@@ -18,8 +24,8 @@ export default class Intro extends Component {
     }
     return (
       <div className='intro-container'>
-        <div className='intro-box' onClick={e => this.enter(e)}>
-          <div className='title'>
+        <div className='intro-box'>
+          <div className='title' onAnimationEnd={e => this.animationEnd()}>
             <span>술</span>
             <span>이</span>
             <br />
@@ -34,7 +40,7 @@ export default class Intro extends Component {
             <span>라</span>
           </div>
           <div class='image'>
-            <svg viewBox='130 0 400 470' width='100%' height='100%'>
+            <svg viewBox='120 10 400 470' width='100%' height='100%'>
               <filter id='dropshadow' x='-10' y='-10' width='100' height='100'>
                 <feGaussianBlur stdDeviation='12' />
               </filter>
@@ -45,7 +51,7 @@ export default class Intro extends Component {
                   <path class='way' d='m236,37l39,0l1,87c0,22 27,25 28,46c1,21 2,255 1,265c-1,10 -98,7 -100,0c-2,-7 1,-240 1,-264c0,-24 28,-26 29,-48c1,-22 0,-75 1,-86z' />
                   <path class='way' d='m205,366c0,15 100,13 100,-2c0,-15 -1,-153 -1,-138c0,15 -97,13 -97,-1c0,-14 -2,126 -2,141z' />
                 </g>
-                <path class='shadow red' d='m403,234l78,0c0,0 11,38 11,55c0,17 -8,37 -16,45c-8,8 -25,3 -25,21c0,18 -1,52 1,57c2,5 34,8 38,18c4,10 -102,12 -98,2c4,-10 41,-15 41,-20c0,-5 3,-40 -1,-58c-4,-18 -9,-9 -21,-19c-12,-10 -20,-26 -19,-46c1,-20 11,-55 11,-55z' />
+                <path class='shadow' d='m403,234l78,0c0,0 11,38 11,55c0,17 -8,37 -16,45c-8,8 -25,3 -25,21c0,18 -1,52 1,57c2,5 34,8 38,18c4,10 -102,12 -98,2c4,-10 41,-15 41,-20c0,-5 3,-40 -1,-58c-4,-18 -9,-9 -21,-19c-12,-10 -20,-26 -19,-46c1,-20 11,-55 11,-55z' />
                 <path class='way' d='m403,234l78,0c0,0 11,38 11,55c0,17 -8,37 -16,45c-8,8 -25,3 -25,21c0,18 -1,52 1,57c2,5 34,8 38,18c4,10 -102,12 -98,2c4,-10 41,-15 41,-20c0,-5 3,-40 -1,-58c-4,-18 -9,-9 -21,-19c-12,-10 -20,-26 -19,-46c1,-20 11,-55 11,-55z' />
               </g>
             </svg>

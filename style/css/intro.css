@@ -2,9 +2,10 @@
 .intro-container {
   width: 100vw;
   height: 100vh;
-  background-color: #222; }
+  background-color: #111; }
   .intro-container .intro-box {
-    width: 900px;
+    width: 60vw;
+    height: 25vw;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -12,35 +13,127 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 5px solid #000;
-    border-radius: 20px;
-    padding: 50px;
-    cursor: pointer; }
+    border: 0.25vw solid #222;
+    border-radius: 1vw;
+    transition-duration: 1s;
+    cursor: default; }
     .intro-container .intro-box:hover {
-      border: 5px solid #eee;
-      border-radius: 20px;
+      border: 0.25vw solid #eee;
       box-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 10px #7f55ff inset, 0 0 20px #7f55ff inset, 0 0 40px #7f55ff inset, 0 0 80px #7f55ff inset; }
   .intro-container .title {
+    width: 25vw;
     font-weight: bold;
-    font-size: 4em;
+    font-size: 4vw;
     font-family: 'Nanum Brush Script', cursive;
-    color: #eee;
+    color: #222;
     filter: blur(0px);
-    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff; }
+    text-shadow: none;
+    animation-name: neon;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-end; }
   .intro-container .title span {
-    margin: 20px;
-    line-height: 100px; }
+    margin: 1vw;
+    line-height: 7vw; }
   .intro-container .image {
-    width: 400px;
-    height: 400px; }
+    height: 20vw;
+    width: auto; }
   .intro-container .shadow {
     fill: none;
-    stroke: #479f78;
+    stroke: rgba(0, 0, 0, 0);
     stroke-width: 30;
-    filter: url(#dropshadow); }
-  .intro-container .red {
-    stroke: #b11d3d; }
+    filter: url(#dropshadow);
+    animation-name: neon;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-end; }
   .intro-container .way {
     fill: none;
-    stroke: #eee;
-    stroke-width: 10; }
+    stroke: #222;
+    stroke-width: 10;
+    animation-name: wayNeon;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-end; }
+
+@keyframes wayNeon {
+  3%, 5% {
+    stroke: #eee; }
+  5%, 7% {
+    stroke: #222; }
+  38%, 40% {
+    stroke: #eee; }
+  40%, 42% {
+    stroke: #222; }
+  68%, 70% {
+    stroke: #eee; }
+  70%, 72% {
+    stroke: #222; }
+  83%, 85% {
+    stroke: #eee; }
+  85%, 87% {
+    stroke: #222; }
+  88%, 90% {
+    stroke: #eee; }
+  90%, 92% {
+    stroke: #222; }
+  93%, 95% {
+    stroke: #eee; }
+  95%, 97% {
+    stroke: #222; }
+  98%, 100% {
+    stroke: #eee; } }
+
+@keyframes neon {
+  3%, 5% {
+    color: #eee;
+    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
+    stroke: #7f55ff; }
+  5%, 7% {
+    color: #222;
+    text-shadow: none;
+    stroke: rgba(0, 0, 0, 0); }
+  38%, 40% {
+    color: #eee;
+    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
+    stroke: #7f55ff; }
+  40%, 42% {
+    color: #222;
+    text-shadow: none;
+    stroke: rgba(0, 0, 0, 0); }
+  68%, 70% {
+    color: #eee;
+    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
+    stroke: #7f55ff; }
+  70%, 72% {
+    color: #222;
+    text-shadow: none;
+    stroke: rgba(0, 0, 0, 0); }
+  83%, 85% {
+    color: #eee;
+    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
+    stroke: #7f55ff; }
+  85%, 87% {
+    color: #222;
+    text-shadow: none;
+    stroke: rgba(0, 0, 0, 0); }
+  88%, 90% {
+    color: #eee;
+    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
+    stroke: #7f55ff; }
+  90%, 92% {
+    color: #222;
+    text-shadow: none;
+    stroke: rgba(0, 0, 0, 0); }
+  93%, 95% {
+    color: #eee;
+    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
+    stroke: #7f55ff; }
+  95%, 97% {
+    color: #222;
+    text-shadow: none;
+    stroke: rgba(0, 0, 0, 0); }
+  98%, 100% {
+    color: #eee;
+    text-shadow: 0 0 10px #7f55ff, 0 0 20px #7f55ff, 0 0 40px #7f55ff, 0 0 80px #7f55ff, 0 0 120px #7f55ff, 0 0 200px #7f55ff, 0 0 400px #7f55ff;
+    stroke: #7f55ff; } }
