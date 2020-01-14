@@ -103,51 +103,11 @@
 
     .notice {
       position: absolute;
+      text-align: center;
+      width: 100%;
       bottom: 32%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: none;
       color: red;
       font-weight: bold;
     }
-
-    //// V sample style V
-    // .info-sample {
-    //   position: absolute;
-    //   top: 6%;
-    //   left: 5%;
-    //   width: 55%;
-    //   text-align: center;
-
-    //   .title-sample {
-    //     font-size: 2vw;
-    //     font-weight: bold;
-    //   }
-
-    //   div {
-    //     margin: 0 auto;
-    //     margin-bottom: 2.3vw;
-    //     width: 70%;
-    //     font-size: 1.5vw;
-    //     font-weight: 600;
-    //   }
-    // }
-    // .profile-sample {
-    //   position: absolute;
-    //   top: 6%;
-    //   right: 5%;
-    //   content: url(../../public/assets/svg/profile.svg);
-    //   width: 35%;
-    //   height: auto;
-    // }
-    // .apply-sample {
-    //   content: url(../../public/assets/svg/approved-red.svg);
-    //   position: absolute;
-    //   bottom: 0%;
-    //   left: 50%;
-    //   width: 45%;
-    //   height: auto;
-    //   transform: translateX(-50%);
-    // }
   }
 }

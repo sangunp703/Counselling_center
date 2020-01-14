@@ -15,10 +15,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
-    height: 60%;
+    height: 70%;
     background-image: url(../../public/assets/image/leather.jpg);
     background-size: contain;
-    border-radius: 10px; }
+    border-radius: 1vw; }
   .menu-container .menu {
     position: absolute;
     top: 50%;
@@ -44,6 +44,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border-radius: 1vw;
     cursor: pointer; }
     .menu-container .content:hover {
       background-color: rgba(255, 255, 255, 0.3); }
@@ -71,24 +72,37 @@
       padding: 0 1vw;
       text-align: left; }
       .menu-container .content .worry .title {
-        font-size: 2vw;
+        font-size: 40px;
         font-weight: bold;
         margin-bottom: 2vw; }
       .menu-container .content .worry .story {
-        font-size: 1.5vw;
-        color: #8e684f; }
+        font-size: 20px;
+        color: #8e684f;
+        width: 100%;
+        height: 70%;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        white-space: pre-wrap; }
+        .menu-container .content .worry .story::-webkit-scrollbar {
+          display: none; }
   .menu-container .btn-box {
     position: absolute;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
     display: flex; }
-  .menu-container .edit-btn {
-    all: unset;
-    background-color: white; }
-  .menu-container .delete-btn {
-    all: unset;
-    background-color: white; }
+    .menu-container .btn-box > button {
+      all: unset;
+      width: 5vw;
+      height: 2vw;
+      color: white;
+      margin: 0 1vw;
+      border-radius: 0.5vw;
+      background-color: #7e583f;
+      cursor: pointer; }
+      .menu-container .btn-box > button:hover {
+        background-color: white;
+        color: #7e583f; }
   .menu-container .arrow-back {
     position: absolute;
     top: 50%;

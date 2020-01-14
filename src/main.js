@@ -19,6 +19,7 @@ export default class Main extends Component {
   }
 
   componentDidMount() {
+    this.openDoor()
     request
       .get('/api/check')
       .query({
@@ -52,6 +53,20 @@ export default class Main extends Component {
   openTalkBox(e) {
     this.setState({ show: 'talk' })
   }
+  openDoor() {
+    const left_door = document.querySelector('.left-door')
+    const right_door = document.querySelector('.right-door')
+    left_door.style.width = '0vw'
+    right_door.style.width = '0vw'
+  }
+
+  logout() {
+    window.sessionStorage.removeItem('id')
+    window.sessionStorage.removeItem('token')
+    window.sessionStorage.removeItem('type')
+    window.sessionStorage.removeItem('reply_num')
+    this.setState({ jump: '/intro' })
+  }
 
   render() {
     if (this.state.jump) {
@@ -63,9 +78,10 @@ export default class Main extends Component {
         <div className='layout-right'></div>
         <img className='bartender' src='' alt='bartender' onClick={e => this.openTalkBox(e)} />
         <img className='table' src='' alt='table'></img>
-        <div className='menu' onClick={e => this.openMenuBox(e)}>
-          메 뉴
+        <div className='menu-img' onClick={e => this.openMenuBox(e)}>
+          <span>메 뉴</span>
         </div>
+        <img className='logout' src='' alt='exit' onClick={e => this.logout(e)} />
         <Menu show={this.state.show} showCallback={this.showCallback} />
         <Glass show={this.state.show} showCallback={this.showCallback} />
         <Write show={this.state.show} showCallback={this.showCallback} />

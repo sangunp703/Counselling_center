@@ -10,19 +10,21 @@ export default class Talk extends Component {
     }
   }
 
-  closeBox(e) {
-    this.props.showCallback('none')
-  }
-
   componentDidUpdate() {
+    const talk_container = document.querySelector('.talk-container')
     if (this.props.show === 'talk') {
-      document.querySelector('.talk-container').style.display = 'block'
+      talk_container.style.display = 'block'
     } else {
-      document.querySelector('.talk-container').style.display = 'none'
+      talk_container.style.display = 'none'
     }
   }
+
   componentDidMount() {
     this.randomPick()
+  }
+
+  closeBox(e) {
+    this.props.showCallback('none')
   }
 
   randomPick() {

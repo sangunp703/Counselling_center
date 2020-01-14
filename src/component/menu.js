@@ -14,26 +14,17 @@ export default class Menu extends Component {
     this.showGlass = this.showGlass.bind(this)
   }
 
-  showWrite() {
-    window.sessionStorage.type = alcohols[this.state.index]
-    this.props.showCallback('write')
-  }
-
-  showGlass() {
-    window.sessionStorage.type = alcohols[this.state.index]
-    this.props.showCallback('glass')
-  }
-
   componentDidUpdate() {
+    const menu_container = document.querySelector('.menu-container')
     if (this.props.show === 'menu') {
-      document.querySelector('.menu-container').style.display = 'block'
-      const menu_container = document.querySelector('.menu-container')
+      menu_container.style.display = 'block'
       const type = menu_container.querySelector('.type')
-      const content = menu_container.querySelector('.content')
-      const worry = menu_container.querySelector('.worry')
       const bottle = menu_container.querySelector('.bottle')
       const glass = menu_container.querySelector('.glass')
+      const content = menu_container.querySelector('.content')
+      const worry = menu_container.querySelector('.worry')
       const reply_count = menu_container.querySelector('.reply-count')
+      const btn_box = menu_container.querySelector('.btn-box')
       const title = worry.querySelector('.title')
       const story = worry.querySelector('.story')
       const alcoholsType = ['소 주', '맥 주', '막 걸 리', '와 인', '샴 페 인', '위 스 키']
@@ -55,23 +46,35 @@ export default class Menu extends Component {
           if (res.body.msg === 'not exist') {
             worry.style.display = 'none'
             reply_count.style.display = 'none'
+            btn_box.style.display = 'none'
             content.removeEventListener('click', this.showGlass)
             content.removeEventListener('click', this.showWrite)
             content.addEventListener('click', this.showWrite)
-            return
+          } else {
+            worry.style.display = 'block'
+            reply_count.style.display = 'block'
+            btn_box.style.display = 'block'
+            reply_count.innerHTML = 'X ' + res.body.reply_count
+            title.innerHTML = res.body.title
+            story.innerHTML = res.body.story
+            content.removeEventListener('click', this.showGlass)
+            content.removeEventListener('click', this.showWrite)
+            content.addEventListener('click', this.showGlass)
           }
-          content.removeEventListener('click', this.showGlass)
-          content.removeEventListener('click', this.showWrite)
-          content.addEventListener('click', this.showGlass)
-          worry.style.display = 'block'
-          reply_count.style.display = 'block'
-          reply_count.innerHTML = 'X ' + res.body.reply_count
-          title.innerHTML = res.body.title
-          story.innerHTML = res.body.story
         })
     } else {
-      document.querySelector('.menu-container').style.display = 'none'
+      menu_container.style.display = 'none'
     }
+  }
+
+  showWrite() {
+    window.sessionStorage.type = alcohols[this.state.index]
+    this.props.showCallback('write')
+  }
+
+  showGlass() {
+    window.sessionStorage.type = alcohols[this.state.index]
+    this.props.showCallback('glass')
   }
 
   closeBox(e) {
@@ -145,7 +148,6 @@ export default class Menu extends Component {
                 글 삭제
               </button>
             </div>
-
             <img className='arrow-back' src='' alt='previous' onClick={e => this.previousMenu(e)} />
             <img className='arrow-next' src='' alt='next' onClick={e => this.nextMenu(e)} />
           </div>

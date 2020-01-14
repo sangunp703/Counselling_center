@@ -11,15 +11,26 @@ export default class Check extends Component {
       jump: '',
       show: 'none'
     }
-    this.jumpCallback = this.jumpCallback.bind(this) // 함수의 this를 본 요소에 바인딩
+    this.jumpCallback = this.jumpCallback.bind(this)
     this.showCallback = this.showCallback.bind(this)
   }
 
-  openJoinBox(e) {
-    this.setState({ show: 'join' })
+  componentDidMount() {
+    this.openDoor()
   }
-  openLoginBox(e) {
-    this.setState({ show: 'login' })
+
+  openDoor() {
+    const left_door = document.querySelector('.left-door')
+    const right_door = document.querySelector('.right-door')
+    left_door.style.width = '0vw'
+    right_door.style.width = '0vw'
+  }
+
+  closeDoor() {
+    const left_door = document.querySelector('.left-door')
+    const right_door = document.querySelector('.right-door')
+    left_door.style.width = '50vw'
+    right_door.style.width = '50vw'
   }
 
   showCallback(showData) {
@@ -29,9 +40,20 @@ export default class Check extends Component {
   }
 
   jumpCallback(jumpData) {
-    this.setState({
-      jump: jumpData
-    })
+    this.closeDoor()
+    setTimeout(e => {
+      this.setState({
+        jump: jumpData
+      })
+    }, 1500)
+  }
+
+  openJoinBox(e) {
+    this.setState({ show: 'join' })
+  }
+
+  openLoginBox(e) {
+    this.setState({ show: 'login' })
   }
 
   partIn(e) {

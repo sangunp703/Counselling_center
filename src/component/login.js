@@ -10,17 +10,19 @@ export default class Login extends Component {
   componentDidUpdate() {
     if (this.props.show === 'login') {
       document.querySelector('.login-container').style.display = 'block'
+    } else {
+      document.querySelector('.login-container').style.display = 'none'
     }
   }
 
   closeBox(e) {
     this.props.showCallback('none')
-    e.currentTarget.parentNode.style.display = 'none'
   }
 
-  deny(element, e) {
-    const apply = e.querySelector('.apply').style
-    const notice = e.querySelector('.notice')
+  deny(element) {
+    const login_container = document.querySelector('.login-container')
+    const apply = login_container.querySelector('.apply').style
+    const notice = login_container.querySelector('.notice')
     notice.style.display = 'block'
 
     if (element === 'id') {
@@ -40,15 +42,15 @@ export default class Login extends Component {
   }
 
   login(e) {
-    const content = e.currentTarget.parentNode
-    const id = content.querySelector('.id').value
+    const login_container = document.querySelector('.login-container')
+    const id = login_container.querySelector('.id').value
     if (id === '') {
-      this.deny('id', content)
+      this.deny('id')
       return
     }
-    const pw = content.querySelector('.pw').value
+    const pw = login_container.querySelector('.pw').value
     if (pw === '') {
-      this.deny('password', content)
+      this.deny('password')
       return
     }
 
@@ -63,15 +65,15 @@ export default class Login extends Component {
           return
         }
         if (res.body.msg === 'not exist') {
-          this.deny('not exist', content)
+          this.deny('not exist')
           return
         } else {
           window.sessionStorage['id'] = id
           window.sessionStorage['token'] = res.body.token
 
-          const notice = content.querySelector('.notice')
+          const notice = login_container.querySelector('.notice')
           notice.style.display = 'none'
-          const applyStyle = content.querySelector('.apply-after').style
+          const applyStyle = login_container.querySelector('.apply-after').style
 
           applyStyle.zIndex = '1'
           applyStyle.opacity = '1'
@@ -79,14 +81,20 @@ export default class Login extends Component {
 
           setTimeout(() => {
             this.props.jump('/main')
-          }, 1500)
+          }, 1200)
         }
       })
   }
 
+  loginEnter(e) {
+    if (e.key === 'Enter') {
+      this.login(e)
+    }
+  }
+
   render() {
     return (
-      <div className='login-container'>
+      <div className='login-container' onKeyPress={e => this.loginEnter(e)}>
         <div className='layout' onClick={e => this.closeBox(e)}></div>
         <div className='content'>
           <form className='info'>
@@ -96,9 +104,6 @@ export default class Login extends Component {
           <img className='apply' onClick={e => this.login(e)} />
           <img className='apply-after' />
           <div className='notice'></div>
-          {/* <div className='name-temp'>홍길동</div>
-          <div className='no-temp'>123456</div>
-          <img className='stamp-temp' src='' alt='stamp' />  */}
         </div>
       </div>
     )

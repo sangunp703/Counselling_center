@@ -7,19 +7,10 @@ export default class Reply extends Component {
     super(props)
   }
 
-  closeBox() {
-    const worry = document.querySelector('.worry')
-    // 글 상자 초기화
-    if (worry.classList.contains('bottom')) {
-      this.worryToggle()
-    }
-    this.props.showCallback('glass')
-  }
-
   componentDidUpdate() {
+    const reply_container = document.querySelector('.reply-container')
     if (this.props.show === 'reply') {
-      document.querySelector('.reply-container').style.display = 'block'
-      const reply_container = document.querySelector('.reply-container')
+      reply_container.style.display = 'block'
       const reply = reply_container.querySelector('.reply')
       const arrow_box = reply_container.querySelector('.arrow-box')
       arrow_box.addEventListener('click', this.worryToggle)
@@ -38,8 +29,17 @@ export default class Reply extends Component {
           }
         })
     } else {
-      document.querySelector('.reply-container').style.display = 'none'
+      reply_container.style.display = 'none'
     }
+  }
+
+  closeBox() {
+    const worry = document.querySelector('.worry')
+    // 컴포넌트 종료 전 추가된 클래스 제거
+    if (worry.classList.contains('bottom')) {
+      this.worryToggle()
+    }
+    this.props.showCallback('glass')
   }
 
   worryToggle() {

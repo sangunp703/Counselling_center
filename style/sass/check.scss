@@ -3,7 +3,8 @@
   width: 100vw;
   height: 100vh;
   background: url(../../public/assets/image/entrance.jpg);
-  background-size: 100vw 100vh;
+  background-size: cover;
+  background-position: center center;
 
   .partition {
     display: grid;
@@ -14,14 +15,12 @@
     .part {
       position: relative;
       grid-column: span 3;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
       background-color: rgba(0, 0, 0, 0.75);
       transition-duration: 1s;
       opacity: 0.75;
     }
+
     .active {
       grid-column: span 4;
       background-color: rgba(0, 0, 0, 0);
@@ -63,44 +62,57 @@
     }
 
     .security {
-      content: url(../../public/assets/image/security.png);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: url(../../public/assets/image/security-black.png);
       width: 18vw;
       height: auto;
-      background-color: rgba(255, 255, 255, 0);
-      padding: 2.5vw;
-      border-radius: 11vw;
       cursor: pointer;
       transition-duration: 1s;
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.25);
+        width: 20vw;
+        content: url(../../public/assets/image/security-white.png);
       }
     }
 
     .login-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       content: url(../../public/assets/image/membership-card-sample.png);
       width: 25vw;
       height: 16.25vw;
       cursor: pointer;
-      box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.75);
+      box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.5);
       transition-duration: 1s;
 
       &:hover {
-        box-shadow: 0px 0px 0.5vw 1.5vw rgba(255, 255, 255, 0.75);
+        width: 30vw;
+        height: 19.5vw;
+        box-shadow: 0px 0px 1vw 0.5vw rgba(255, 255, 255, 0.5);
       }
     }
 
     .join-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       content: url(../../public/assets/image/identity-card-sample.png);
       width: 25vw;
       height: auto;
       border-radius: 5px;
       cursor: pointer;
-      box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.75);
+      box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.5);
       transition-duration: 1s;
 
       &:hover {
-        box-shadow: 0px 0px 0.5vw 1.5vw rgba(255, 255, 255, 0.75);
+        width: 30vw;
+        box-shadow: 0px 0px 1vw 0.5vw rgba(255, 255, 255, 0.5);
       }
     }
   }

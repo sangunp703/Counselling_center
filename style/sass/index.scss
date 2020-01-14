@@ -1,0 +1,22 @@
+.left-door {
+  position: absolute;
+  width: 0;
+  height: 100vh;
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+  background-color: black;
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1), 0 0 4vw rgba(0, 0, 0, 0.1), 0 0 6vw rgba(0, 0, 0, 0.1), 0 0 8vw rgba(0, 0, 0, 0.1), 0 0 10vw rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}
+
+.right-door {
+  position: absolute;
+  right: 0;
+  width: 0;
+  height: 100vh;
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+  background-color: black;
+  box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1), 0 0 4vw rgba(0, 0, 0, 0.1), 0 0 6vw rgba(0, 0, 0, 0.1), 0 0 8vw rgba(0, 0, 0, 0.1), 0 0 10vw rgba(0, 0, 0, 0.1);
+  z-index: 5;
+}

@@ -2,8 +2,8 @@
   width: 100vw;
   height: 100vh;
   background: url(../../public/assets/image/bar.jpg);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 
   .layout-left {
     position: absolute;
@@ -11,7 +11,7 @@
     top: 0;
     width: 50vw;
     height: 100vh;
-    background: linear-gradient(315deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(315deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 55%, rgba(0, 0, 0, 1) 100%);
   }
   .layout-right {
     position: absolute;
@@ -19,7 +19,7 @@
     top: 0;
     width: 50vw;
     height: 100vh;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 55%, rgba(0, 0, 0, 1) 100%);
   }
   .bartender {
     position: absolute;
@@ -43,26 +43,41 @@
     height: 25%;
     content: url(../../public/assets/image/table.png);
   }
-  & > .menu {
+  .menu-img {
     background-image: url(../../public/assets/image/leather.jpg);
     background-size: contain;
     background-repeat: repeat;
-    height: 13%;
+    height: 15%;
     width: 10%;
     position: absolute;
     bottom: 7%;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
     box-shadow: 2px 2px 5px 1px black;
-    text-align: center;
     color: white;
     font-size: 1.5vw;
-    line-height: 3vw;
     cursor: pointer;
 
     &:hover {
       box-shadow: 0px 0px 5px 5px white;
+    }
+  }
+  .logout {
+    content: url(../../public/assets/image/exit-dark.png);
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    height: 4vw;
+    width: 10vw;
+    cursor: pointer;
+
+    &:hover {
+      content: url(../../public/assets/image/exit-bright.png);
+      box-shadow: 0px 0px 10px 5px white;
     }
   }
 }

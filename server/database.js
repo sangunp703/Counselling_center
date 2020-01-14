@@ -201,7 +201,6 @@ module.exports = function(app, User, Content) {
         res.json({ msg: 'DB error' })
         return
       }
-      console.log(result)
       if (result && result.length !== 0) {
         const num = Math.floor(Math.random() * result.length)
         res.json({ msg: 'complete', title: result[num].title, story: result[num].story, author: result[num].author, type: result[num].type })

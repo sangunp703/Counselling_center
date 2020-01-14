@@ -9,22 +9,35 @@ export default class Intro extends Component {
       jump: ''
     }
   }
+
+  closeDoor() {
+    const left_door = document.querySelector('.left-door')
+    const right_door = document.querySelector('.right-door')
+    left_door.style.width = '50vw'
+    right_door.style.width = '50vw'
+  }
+
   enter() {
-    this.setState({ jump: '/check' })
+    this.closeDoor()
+    setTimeout(e => {
+      this.setState({ jump: '/check' })
+    }, 1500)
   }
-  animationEnd(){
+
+  animationEnd() {
     const intro_container = document.querySelector('.intro-container')
-    const intro_box = intro_container.querySelector('.intro-box')
-    intro_box.addEventListener('click', this.enter.bind(this))
-    intro_box.style.cursor = 'pointer'
+    const cover = intro_container.querySelector('.cover')
+    cover.style.display = 'none'
   }
+
   render() {
     if (this.state.jump) {
       return <Redirect to={this.state.jump} />
     }
     return (
       <div className='intro-container'>
-        <div className='intro-box'>
+        <div className='cover'></div>
+        <div className='intro-box' onClick={e => this.enter()}>
           <div className='title' onAnimationEnd={e => this.animationEnd()}>
             <span>술</span>
             <span>이</span>

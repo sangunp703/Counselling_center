@@ -7,6 +7,21 @@ export default class Write extends Component {
     super(props)
   }
 
+  componentDidUpdate() {
+    const glass_container = document.querySelector('.glass-container')
+    if (this.props.show === 'glass') {
+      this.make10Div()
+      glass_container.style.display = 'block'
+    } else {
+      const grid = glass_container.querySelector('.grid')
+      // 현재 보여지는 컴포넌트가 glass가 아니면 불러온 댓글 목록 초기화
+      while (grid.hasChildNodes()) {
+        grid.removeChild(grid.firstChild)
+      }
+      glass_container.style.display = 'none'
+    }
+  }
+
   glassSelect(num) {
     window.sessionStorage.reply_num = num
     this.props.showCallback('reply')
@@ -14,20 +29,6 @@ export default class Write extends Component {
 
   closeBox(e) {
     this.props.showCallback('menu')
-  }
-
-  componentDidUpdate() {
-    if (this.props.show === 'glass') {
-      this.make10Div()
-      document.querySelector('.glass-container').style.display = 'block'
-    } else {
-      const glass_container = document.querySelector('.glass-container')
-      const grid = glass_container.querySelector('.grid')
-      while (grid.hasChildNodes()) {
-        grid.removeChild(grid.firstChild)
-      }
-      document.querySelector('.glass-container').style.display = 'none'
-    }
   }
 
   createDiv(num) {
@@ -44,7 +45,6 @@ export default class Write extends Component {
   }
 
   make10Div() {
-    const divs = []
     request
       .get('/api/getReplyCount')
       .query({
@@ -58,25 +58,22 @@ export default class Write extends Component {
           const glass_container = document.querySelector('.glass-container')
           const grid = glass_container.querySelector('.grid')
           const count = grid.childElementCount
-          // 5개씩 불러오되 댓글이 5개 이하일 경우 그 수만 큼만 출력
+          // 10개씩 불러오되 댓글이 10개 이하일 경우 그 수만 큼만 출력
           const x = res.body.count >= count + 10 ? 10 : res.body.count - count
           for (let i = 0; i < x; i++) {
-            divs.push(this.createDiv(count + i + 1))
-          }
-          for (var i = 0; i < divs.length; i++) {
-            grid.appendChild(divs[i])
+            grid.appendChild(this.createDiv(count + i + 1))
           }
         }
       })
   }
 
   scrollHandle(e) {
-    var scrollT = e.currentTarget.scrollTop // 스크롤바의 상단위치
-    var scrollH = e.currentTarget.clientHeight // 스크롤바를 갖는 div의 높이
+    var scrollT = e.currentTarget.scrollTop
+    var scrollH = e.currentTarget.clientHeight
     const grid = e.currentTarget.querySelector('.grid')
-    var contentH = grid.clientHeight // 문서 전체 내용을 갖는 div의 높이
+    var contentH = grid.clientHeight
+    // 스크롤바가 가장 아래 쪽에 위치할 때 새로운 댓글 불러오기
     if (scrollT + scrollH + 1 >= contentH) {
-      // 스크롤바가 아래 쪽에 위치할 때
       this.make10Div()
     }
   }
