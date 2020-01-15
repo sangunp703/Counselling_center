@@ -53,9 +53,9 @@
       transition-duration: 1s; }
     .check-container .partition .security {
       position: absolute;
-      top: 50%;
+      bottom: 0;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       content: url(../../public/assets/image/security-black.png);
       width: 18vw;
       height: auto;

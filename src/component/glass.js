@@ -22,8 +22,9 @@ export default class Write extends Component {
     }
   }
 
-  glassSelect(num) {
+  glassSelect(index, num) {
     window.sessionStorage.reply_num = num
+    window.sessionStorage.reply_index = index
     this.props.showCallback('reply')
   }
 
@@ -31,22 +32,25 @@ export default class Write extends Component {
     this.props.showCallback('menu')
   }
 
-  createDiv(num) {
+  createDiv(index, num, watched) {
     const div = document.createElement('div')
     const img = document.createElement('img')
     img.src = '/assets/image/' + window.sessionStorage.type + '-glass.png'
     const span = document.createElement('span')
-    span.innerHTML = num
+    span.innerHTML = index
     div.appendChild(img)
     div.appendChild(span)
-    div.addEventListener('click', this.glassSelect.bind(this, num))
+    div.addEventListener('click', this.glassSelect.bind(this, index, num))
+    if (watched) {
+      div.classList.add('watched')
+    }
 
     return div
   }
 
   make10Div() {
     request
-      .get('/api/getReplyCount')
+      .get('/api/getAllReply')
       .query({
         id: window.sessionStorage.id,
         type: window.sessionStorage.type
@@ -61,9 +65,9 @@ export default class Write extends Component {
           const count = grid.childElementCount
 
           // 10개씩 불러오되 댓글이 10개 이하일 경우 그 수만 큼만 출력
-          const x = res.body.count >= count + 10 ? 10 : res.body.count - count
+          const x = res.body.reply.length >= count + 10 ? 10 : res.body.reply.length - count
           for (let i = 0; i < x; i++) {
-            grid.appendChild(this.createDiv(count + i + 1))
+            grid.appendChild(this.createDiv(count + i + 1, res.body.reply.length, res.body.reply[count + i].watched))
           }
           if (!grid.hasChildNodes()) {
             none.style.display = 'block'

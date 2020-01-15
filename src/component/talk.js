@@ -24,7 +24,15 @@ export default class Talk extends Component {
   }
 
   closeBox(e) {
-    this.props.showCallback('none')
+    if (confirm('글 쓰기를 취소하고 나가시겠습니까?')) {
+      this.props.showCallback('none')
+    }
+  }
+
+  next() {
+    if (confirm('다른 글을 보시겠습니까?')) {
+      this.randomPick()
+    }
   }
 
   randomPick() {
@@ -35,6 +43,10 @@ export default class Talk extends Component {
       })
       .end((err, res) => {
         if (err) {
+          return
+        }
+        if (res.body.msg === 'fail') {
+          title.innerHTML = '다른 사용자가 남긴 고민이 없습니다'
           return
         }
         const talk_container = document.querySelector('.talk-container')
@@ -52,20 +64,27 @@ export default class Talk extends Component {
   reply() {
     const talk_container = document.querySelector('.talk-container')
     const reply = talk_container.querySelector('.reply')
-    if (reply.value !== '') {
-      request
-        .post('/api/writeReply')
-        .query({
-          author: this.state.content.author,
-          type: this.state.content.type,
-          reply: reply.value
-        })
-        .end((err, res) => {
-          if (err) {
-            return
-          }
-          reply.value = ''
-        })
+    if (reply.value.length > 0) {
+      if (confirm('댓글을 남기시겠습니까?')) {
+        if (this.state.content.author !== '' && this.state.content.type !== '') {
+          request
+            .post('/api/writeReply')
+            .query({
+              author: this.state.content.author,
+              type: this.state.content.type,
+              reply: reply.value
+            })
+            .end((err, res) => {
+              if (err) {
+                return
+              }
+              reply.value = ''
+              this.randomPick()
+            })
+        } else {
+          alert('댓글을 남길 수 없습니다')
+        }
+      }
     }
   }
 
@@ -73,22 +92,22 @@ export default class Talk extends Component {
     return (
       <div className='talk-container'>
         <div className='layout' onClick={e => this.closeBox(e)}></div>
+        <div className='big-bubble'></div>
+        <div className='small-bubble'></div>
         <div className='content'>
-          <div className='scroll'>
-            <div className='worry-box'>
-              <div className='title'>title</div>
-              <div className='story'>story</div>
-            </div>
+          <div className='worry-box'>
+            <div className='title'></div>
+            <div className='story'></div>
           </div>
-          <div className='reply-box'>
-            <textarea className='reply'></textarea>
-            <button className='submit' type='button' onClick={e => this.reply()}>
-              상담 완료
-            </button>
-            <button className='change' type='button' onClick={e => this.randomPick()}>
-              다른 대화
-            </button>
-          </div>
+        </div>
+        <div className='reply-box'>
+          <textarea className='reply'></textarea>
+          <button className='submit' type='button' onClick={e => this.reply()}>
+            상담 완료
+          </button>
+          <button className='change' type='button' onClick={e => this.next()}>
+            다른 대화
+          </button>
         </div>
       </div>
     )

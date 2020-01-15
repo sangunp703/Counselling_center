@@ -11,35 +11,43 @@ export default class Reply extends Component {
     const reply_container = document.querySelector('.reply-container')
     if (this.props.show === 'reply') {
       reply_container.style.display = 'block'
-      const reply = reply_container.querySelector('.reply')
       const arrow_box = reply_container.querySelector('.arrow-box')
       const arrow = reply_container.querySelector('.arrow')
       arrow_box.addEventListener('click', this.worryToggle)
       arrow.src = '/assets/image/down.png'
-      request
-        .get('/api/getReply')
-        .query({
-          id: window.sessionStorage.id,
-          type: window.sessionStorage.type,
-          num: window.sessionStorage.reply_num
-        })
-        .end((err, res) => {
-          if (err) {
-            return
-          } else {
-            reply.innerHTML = res.body.reply
-          }
-        })
+      this.getReply()
     } else {
       reply_container.style.display = 'none'
     }
   }
 
+  getReply() {
+    const reply_container = document.querySelector('.reply-container')
+    const reply = reply_container.querySelector('.reply')
+    request
+      .get('/api/getReply')
+      .query({
+        id: window.sessionStorage.id,
+        type: window.sessionStorage.type,
+        index: window.sessionStorage.reply_index
+      })
+      .end((err, res) => {
+        if (err) {
+          return
+        } else {
+          reply.innerHTML = res.body.reply.reply
+        }
+      })
+  }
+
   closeBox() {
-    const worry = document.querySelector('.worry')
+    const reply_container = document.querySelector('.reply-container')
+    const worry = reply_container.querySelector('.worry')
     // 컴포넌트 종료 전 추가된 클래스 제거
     if (worry.classList.contains('bottom')) {
-      this.worryToggle()
+      const worry_content = worry.querySelector('.worry-content')
+      worry.classList.remove('bottom')
+      worry_content.style.display = 'none'
     }
     this.props.showCallback('glass')
   }
@@ -87,19 +95,21 @@ export default class Reply extends Component {
   }
 
   deleteReply() {
-    request
-      .post('/api/deleteReply')
-      .query({
-        author: window.sessionStorage.id,
-        type: window.sessionStorage.type,
-        index: window.sessionStorage.reply_num
-      })
-      .end((err, res) => {
-        if (err) {
-          return
-        }
-        this.closeBox()
-      })
+    if (confirm('댓글을 삭제하시겠습니까?')) {
+      request
+        .post('/api/deleteReply')
+        .query({
+          author: window.sessionStorage.id,
+          type: window.sessionStorage.type,
+          index: window.sessionStorage.reply_index
+        })
+        .end((err, res) => {
+          if (err) {
+            return
+          }
+          this.closeBox()
+        })
+    }
   }
 
   mouseover(e) {
@@ -123,6 +133,25 @@ export default class Reply extends Component {
     }
   }
 
+  prevReply() {
+    const index = parseInt(window.sessionStorage.reply_index, 10)
+    if (index === 1) {
+      window.sessionStorage.reply_index = window.sessionStorage.reply_num
+    } else {
+      window.sessionStorage.reply_index = index - 1
+    }
+    this.getReply()
+  }
+  nextReply() {
+    const index = parseInt(window.sessionStorage.reply_index, 10)
+    if (window.sessionStorage.reply_index === window.sessionStorage.reply_num) {
+      window.sessionStorage.reply_index = 1
+    } else {
+      window.sessionStorage.reply_index = index + 1
+    }
+    this.getReply()
+  }
+
   render() {
     return (
       <div className='reply-container'>
@@ -130,6 +159,12 @@ export default class Reply extends Component {
         <div className='content'>
           <div className='reply-box'>
             <pre className='reply'></pre>
+            <button className='prev-btn' type='button' onClick={e => this.prevReply()}>
+              이전 댓글
+            </button>
+            <button className='next-btn' type='button' onClick={e => this.nextReply()}>
+              다음 댓글
+            </button>
             <button className='delete-btn' type='button' onClick={e => this.deleteReply()}>
               댓글 삭제
             </button>

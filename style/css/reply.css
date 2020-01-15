@@ -39,6 +39,38 @@
         border: 2px white dashed;
         border-radius: 10px;
         padding: 10px; }
+      .reply-container .content .reply-box .prev-btn {
+        all: unset;
+        position: absolute;
+        bottom: 5%;
+        left: 5%;
+        width: 5vw;
+        height: 2vw;
+        border-radius: 0.5vw;
+        background-color: #e8d6b4;
+        color: #6e482f;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer; }
+        .reply-container .content .reply-box .prev-btn:hover {
+          color: #e8d6b4;
+          background-color: #6e482f; }
+      .reply-container .content .reply-box .next-btn {
+        all: unset;
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        width: 5vw;
+        height: 2vw;
+        border-radius: 0.5vw;
+        background-color: #e8d6b4;
+        color: #6e482f;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer; }
+        .reply-container .content .reply-box .next-btn:hover {
+          color: #e8d6b4;
+          background-color: #6e482f; }
       .reply-container .content .reply-box .delete-btn {
         all: unset;
         position: absolute;
@@ -76,14 +108,15 @@
       color: #6e482f; }
       .reply-container .content .worry-content .title {
         text-align: center;
-        font-size: 40px;
+        font-size: 22px;
         font-weight: bold;
         margin-bottom: 2vw;
         border: 2px #6e482f dashed;
         border-radius: 10px;
-        padding: 10px; }
+        padding: 10px;
+        overflow: hidden; }
       .reply-container .content .worry-content .story {
-        font-size: 20px;
+        font-size: 18px;
         overflow-y: scroll;
         -ms-overflow-style: none;
         white-space: pre-wrap;

@@ -153,32 +153,6 @@ module.exports = function(app, User, Content) {
     })
   })
 
-  app.get('/api/getReplyCount', (req, res) => {
-    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
-      if (err) {
-        console.error(err)
-        res.json({ msg: 'DB error' })
-        return
-      }
-      if (result) {
-        res.json({ count: result.reply.length })
-      }
-    })
-  })
-
-  app.get('/api/getReply', (req, res) => {
-    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
-      if (err) {
-        console.error(err)
-        res.json({ msg: 'DB error' })
-        return
-      }
-      if (result) {
-        res.json({ reply: result.reply[req.query.num - 1] })
-      }
-    })
-  })
-
   app.get('/api/getContent', (req, res) => {
     Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
       if (err) {
@@ -210,6 +184,17 @@ module.exports = function(app, User, Content) {
     })
   })
 
+  app.post('/api/deleteContent', (req, res) => {
+    Content.remove({ author: req.query.author, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      res.json({ msg: 'delete complete' })
+    })
+  })
+
   app.post('/api/writeReply', (req, res) => {
     Content.findOne({ author: req.query.author, type: req.query.type }, (err, result) => {
       if (err) {
@@ -218,7 +203,8 @@ module.exports = function(app, User, Content) {
         return
       }
       if (result) {
-        result.reply.push(req.query.reply)
+        const add_reply = { reply: req.query.reply, watched: false }
+        result.reply.push(add_reply)
         result.save(err => {
           if (err) {
             console.error(err)
@@ -235,14 +221,37 @@ module.exports = function(app, User, Content) {
     })
   })
 
-  app.post('/api/deleteContent', (req, res) => {
-    Content.remove({ author: req.query.author, type: req.query.type }, (err, result) => {
+  app.get('/api/getAllReply', (req, res) => {
+    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
       if (err) {
         console.error(err)
         res.json({ msg: 'DB error' })
         return
       }
-      res.json({ msg: 'delete complete' })
+      if (result) {
+        res.json({ reply: result.reply })
+      }
+    })
+  })
+
+  app.get('/api/getReply', (req, res) => {
+    Content.findOne({ author: req.query.id, type: req.query.type }, (err, result) => {
+      if (err) {
+        console.error(err)
+        res.json({ msg: 'DB error' })
+        return
+      }
+      if (result) {
+        result.reply[req.query.index - 1].watched = true
+        result.save(err => {
+          if (err) {
+            console.error(err)
+            res.json({ msg: 'DB error' })
+            return
+          }
+          res.json({ msg: 'update complete', reply: result.reply[req.query.index - 1] })
+        })
+      }
     })
   })
 

@@ -34,7 +34,7 @@
     color: #222;
     text-shadow: none;
     animation-name: neon;
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-fill-mode: forwards;
     animation-timing-function: step-end; }
   .intro-container .title span {
@@ -49,7 +49,7 @@
     stroke-width: 30;
     filter: url(#dropshadow);
     animation-name: neon;
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-fill-mode: forwards;
     animation-timing-function: step-end; }
   .intro-container .way {
@@ -57,7 +57,7 @@
     stroke: #222;
     stroke-width: 10;
     animation-name: wayNeon;
-    animation-duration: 5s;
+    animation-duration: 4s;
     animation-fill-mode: forwards;
     animation-timing-function: step-end; }
 

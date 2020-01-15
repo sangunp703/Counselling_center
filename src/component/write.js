@@ -41,14 +41,16 @@ export default class Write extends Component {
   }
 
   closeBox() {
-    const write_container = document.querySelector('.write-container')
-    const title = write_container.querySelector('.title')
-    const story = write_container.querySelector('.story')
-    const notice = write_container.querySelector('.notice')
-    notice.innerHTML = ''
-    title.value = ''
-    story.value = ''
-    this.props.showCallback('menu')
+    if (confirm('글 쓰기를 취소하고 나가시겠습니까?')) {
+      const write_container = document.querySelector('.write-container')
+      const title = write_container.querySelector('.title')
+      const story = write_container.querySelector('.story')
+      const notice = write_container.querySelector('.notice')
+      notice.innerHTML = ''
+      title.value = ''
+      story.value = ''
+      this.props.showCallback('menu')
+    }
   }
 
   write(action, new_submit) {
@@ -77,7 +79,10 @@ export default class Write extends Component {
               return
             }
             submit.parentNode.replaceChild(new_submit, submit) // 현 버튼 요소를 이벤트 추가 전 요소로 변경하는 것으로 이벤트 삭제
-            this.closeBox()
+            notice.innerHTML = ''
+            title.value = ''
+            story.value = ''
+            this.props.showCallback('menu')
           })
       }
     } else {
@@ -90,7 +95,7 @@ export default class Write extends Component {
       <div className='write-container'>
         <div className='layout' onClick={e => this.closeBox(e)}></div>
         <form className='form'>
-          <input className='title' type='text' placeholder='제 목' />
+          <input className='title' type='text' placeholder='제 목' maxLength='20' />
           <textarea className='story' placeholder='내 용'></textarea>
           <div className='notice'></div>
           <button className='submit' type='button'>
