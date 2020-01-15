@@ -13,7 +13,9 @@ export default class Reply extends Component {
       reply_container.style.display = 'block'
       const reply = reply_container.querySelector('.reply')
       const arrow_box = reply_container.querySelector('.arrow-box')
+      const arrow = reply_container.querySelector('.arrow')
       arrow_box.addEventListener('click', this.worryToggle)
+      arrow.src = '/assets/image/down.png'
       request
         .get('/api/getReply')
         .query({
@@ -47,12 +49,15 @@ export default class Reply extends Component {
     const worry = reply_container.querySelector('.worry')
     const worry_content = worry.querySelector('.worry-content')
     const arrow_box = reply_container.querySelector('.arrow-box')
+    const arrow = reply_container.querySelector('.arrow')
     if (worry.classList.contains('bottom')) {
       worry_content.style.display = 'none'
       worry.classList.toggle('bottom')
+      arrow.src = '/assets/image/down.png'
     } else {
       const title = worry_content.querySelector('.title')
       const story = worry_content.querySelector('.story')
+      arrow.src = '/assets/image/up.png'
 
       request
         .get('/api/getContent')
@@ -97,6 +102,27 @@ export default class Reply extends Component {
       })
   }
 
+  mouseover(e) {
+    const reply_container = document.querySelector('.reply-container')
+    const worry = reply_container.querySelector('.worry')
+    const arrow = reply_container.querySelector('.arrow')
+    if (worry.classList.contains('bottom')) {
+      arrow.src = '/assets/image/up-white.png'
+    } else {
+      arrow.src = '/assets/image/down-white.png'
+    }
+  }
+  mouseout(e) {
+    const reply_container = document.querySelector('.reply-container')
+    const worry = reply_container.querySelector('.worry')
+    const arrow = reply_container.querySelector('.arrow')
+    if (worry.classList.contains('bottom')) {
+      arrow.src = '/assets/image/up.png'
+    } else {
+      arrow.src = '/assets/image/down.png'
+    }
+  }
+
   render() {
     return (
       <div className='reply-container'>
@@ -111,12 +137,10 @@ export default class Reply extends Component {
           <div className='worry'>
             <div className='worry-content'>
               <h2 className='title'>제 목</h2>
-              <div className='story-box'>
-                <pre className='story'>내 용</pre>
-              </div>
+              <pre className='story'>내 용</pre>
             </div>
           </div>
-          <div className='arrow-box'>
+          <div className='arrow-box' onMouseOver={e => this.mouseover(e)} onMouseOut={e => this.mouseout(e)}>
             <img className='arrow' src='' alt='arrow' />
           </div>
         </div>

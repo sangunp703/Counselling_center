@@ -61,11 +61,13 @@ export default class Main extends Component {
   }
 
   logout() {
-    window.sessionStorage.removeItem('id')
-    window.sessionStorage.removeItem('token')
-    window.sessionStorage.removeItem('type')
-    window.sessionStorage.removeItem('reply_num')
-    this.setState({ jump: '/intro' })
+    if (confirm('로그아웃 하시겠습니까?')) {
+      window.sessionStorage.removeItem('id')
+      window.sessionStorage.removeItem('token')
+      window.sessionStorage.removeItem('type')
+      window.sessionStorage.removeItem('reply_num')
+      this.setState({ jump: '/intro' })
+    }
   }
 
   render() {

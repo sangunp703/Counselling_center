@@ -106,20 +106,22 @@ export default class Menu extends Component {
   }
 
   deleteContent() {
-    request
-      .post('/api/deleteContent')
-      .query({
-        author: window.sessionStorage.id,
-        type: alcohols[this.state.index]
-      })
-      .end((err, res) => {
-        if (err) {
-          return
-        }
-        this.setState({
-          index: this.state.index
+    if (confirm('글을 삭제하시겠습니까?')) {
+      request
+        .post('/api/deleteContent')
+        .query({
+          author: window.sessionStorage.id,
+          type: alcohols[this.state.index]
         })
-      })
+        .end((err, res) => {
+          if (err) {
+            return
+          }
+          this.setState({
+            index: this.state.index
+          })
+        })
+    }
   }
 
   render() {

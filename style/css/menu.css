@@ -69,13 +69,13 @@
       width: 60%;
       height: 90%;
       border-left: 2px #7e583f dashed;
-      padding: 0 1vw;
-      text-align: left; }
+      padding: 0 1vw; }
       .menu-container .content .worry .title {
         font-size: 40px;
         font-weight: bold;
         margin-bottom: 2vw; }
       .menu-container .content .worry .story {
+        text-align: left;
         font-size: 20px;
         color: #8e684f;
         width: 100%;
@@ -95,7 +95,7 @@
       all: unset;
       width: 5vw;
       height: 2vw;
-      color: white;
+      color: #e8d6b4;
       margin: 0 1vw;
       border-radius: 0.5vw;
       background-color: #7e583f;

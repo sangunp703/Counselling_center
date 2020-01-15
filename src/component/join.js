@@ -53,7 +53,7 @@ export default class Join extends Component {
     }
     const pw = join_container.querySelector('.pw').value
     const pwCheck = join_container.querySelector('.pwCheck').value
-    if (!pw.match(/^[a-zA-Z0-9]{6,20}$/)) {
+    if (!pw.match(/^.{6,20}$/)) {
       this.deny('password')
       return
     }
@@ -117,8 +117,8 @@ export default class Join extends Component {
         notice.innerHTML = ''
       }
     } else if (e.currentTarget.classList.contains('pw')) {
-      if (!value.match(/^[a-zA-Z0-9]{6,20}$/)) {
-        notice.innerHTML = '비밀번호는 6자 이상 20자 이하의 영어와 숫자로 구성됩니다'
+      if (!value.match(/^.{6,20}$/)) {
+        notice.innerHTML = '비밀번호는 6자 이상 20자 이하입니다'
       } else {
         notice.innerHTML = ''
       }

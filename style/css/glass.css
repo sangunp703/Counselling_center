@@ -16,7 +16,9 @@
     transform: translate(-50%, -50%);
     width: 60vw;
     height: 60vh;
-    background-color: black; }
+    background-image: url(../../public/assets/image/leather.jpg);
+    background-size: contain;
+    border-radius: 1vw; }
     .glass-container .content .scroll {
       position: absolute;
       top: 35%;
@@ -25,12 +27,21 @@
       width: 90%;
       height: 70%;
       margin: 5% auto;
-      border: 1px red solid;
       overflow-y: scroll;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 1vw;
       padding: 1vw;
       -ms-overflow-style: none; }
       .glass-container .content .scroll::-webkit-scrollbar {
         display: none; }
+    .glass-container .content .none {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 3vw;
+      display: none; }
     .glass-container .content .grid {
       position: relative;
       width: 100%;

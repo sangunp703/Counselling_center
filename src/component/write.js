@@ -14,7 +14,7 @@ export default class Write extends Component {
       const title = write_container.querySelector('.title')
       const story = write_container.querySelector('.story')
       const submit = write_container.querySelector('.submit')
-
+      var new_submit = submit.cloneNode(true) // 이벤트 추가하기 전 버튼요소 복사
       request
         .get('/api/getContent')
         .query({
@@ -29,14 +29,10 @@ export default class Write extends Component {
             // 해당 컨텐츠가 있는 경우 수정 하기 이벤트
             title.value = res.body.title
             story.value = res.body.story
-            submit.removeEventListener('click', this.edit.bind(this))
-            submit.removeEventListener('click', this.write.bind(this))
-            submit.addEventListener('click', this.edit.bind(this))
+            submit.addEventListener('click', this.write.bind(this, 'edit', new_submit))
           } else {
             // 해당 컨텐츠가 없는 경우 새로 쓰기 이벤트
-            submit.removeEventListener('click', this.edit.bind(this))
-            submit.removeEventListener('click', this.write.bind(this))
-            submit.addEventListener('click', this.write.bind(this))
+            submit.addEventListener('click', this.write.bind(this, 'write', new_submit))
           }
         })
     } else {
@@ -45,62 +41,47 @@ export default class Write extends Component {
   }
 
   closeBox() {
+    const write_container = document.querySelector('.write-container')
+    const title = write_container.querySelector('.title')
+    const story = write_container.querySelector('.story')
+    const notice = write_container.querySelector('.notice')
+    notice.innerHTML = ''
+    title.value = ''
+    story.value = ''
     this.props.showCallback('menu')
   }
 
-  write() {
+  write(action, new_submit) {
     const write_container = document.querySelector('.write-container')
     const title = write_container.querySelector('.title')
     const story = write_container.querySelector('.story')
+    const submit = write_container.querySelector('.submit')
+    const notice = write_container.querySelector('.notice')
+
+    notice.innerHTML = ''
+    action = '/api/' + action
 
     // 글을 적었을 때만 데이터베이스에 저장
-    if (title.value.length >= 0 && story.value.length >= 0) {
-      request
-        .post('/api/write')
-        .query({
-          id: window.sessionStorage.id,
-          title: title.value,
-          story: story.value,
-          type: window.sessionStorage.type
-        })
-        .end((err, res) => {
-          if (err) {
-            return
-          }
-          title.value = ''
-          story.value = ''
-          this.closeBox()
-        })
+    if (title.value.length > 0 && story.value.length > 0) {
+      if (confirm('글을 저장하시겠습니까?')) {
+        request
+          .post(action)
+          .query({
+            id: window.sessionStorage.id,
+            title: title.value,
+            story: story.value,
+            type: window.sessionStorage.type
+          })
+          .end((err, res) => {
+            if (err) {
+              return
+            }
+            submit.parentNode.replaceChild(new_submit, submit) // 현 버튼 요소를 이벤트 추가 전 요소로 변경하는 것으로 이벤트 삭제
+            this.closeBox()
+          })
+      }
     } else {
-      // 메시지 출력
-    }
-  }
-
-  edit() {
-    const write_container = document.querySelector('.write-container')
-    const title = write_container.querySelector('.title')
-    const story = write_container.querySelector('.story')
-
-    // 글을 적었을 때만 데이터베이스에 저장
-    if (title.value.length >= 0 && story.value.length >= 0) {
-      request
-        .post('/api/edit')
-        .query({
-          id: window.sessionStorage.id,
-          title: title.value,
-          story: story.value,
-          type: window.sessionStorage.type
-        })
-        .end((err, res) => {
-          if (err) {
-            return
-          }
-          title.value = ''
-          story.value = ''
-          this.closeBox()
-        })
-    } else {
-      // 메시지 출력
+      notice.innerHTML = '제목과 내용을 입력하세요'
     }
   }
 
@@ -111,6 +92,7 @@ export default class Write extends Component {
         <form className='form'>
           <input className='title' type='text' placeholder='제 목' />
           <textarea className='story' placeholder='내 용'></textarea>
+          <div className='notice'></div>
           <button className='submit' type='button'>
             KEEP
           </button>
