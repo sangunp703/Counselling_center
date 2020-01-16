@@ -1,3 +1,5 @@
+@import 'variable.scss';
+
 .talk-container {
   display: none;
   width: 100vw;
@@ -12,72 +14,50 @@
     background-color: rgba(0, 0, 0, 0);
   }
 
-  .big-bubble {
-    position: absolute;
-    top: 50%;
-    right: 34%;
-    transform: translate(-50%, -50%);
-    width: 4vw;
-    height: 4vw;
-    border-radius: 2vw;
-    background-color: white;
-  }
-
-  .small-bubble {
-    position: absolute;
-    top: 55%;
-    right: 30%;
-    transform: translate(-50%, -50%);
-    width: 3vw;
-    height: 3vw;
-    border-radius: 2vw;
-    background-color: white;
-  }
-
   .content {
     position: absolute;
     top: 5%;
     left: 35%;
     transform: translateX(-50%);
     width: 40%;
-    height: 50%;
+    height: 60%;
     background-color: white;
-    border-radius: 2vw;
+    border-radius: 1vw;
     overflow-y: scroll;
-    padding: 20px;
     -ms-overflow-style: none;
+    background-image: url(../../public/assets/image/leather.jpg);
+    background-size: contain;
 
     &::-webkit-scrollbar {
       display: none;
     }
 
     .worry-box {
-      position: relative;
-      width: 100%;
-      height: 100%;
+      @extend .set-center;
+      width: 90%;
+      height: 90%;
+      background-image: url(../../public/assets/image/menu-bgi.png);
+      background-size: 100% 100%;
 
       .title {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 22px;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 25px;
         font-weight: bold;
-        padding: 10px;
-        border: 2px gray dashed;
-        border-radius: 10px;
+        color: $text-color;
         overflow: hidden;
       }
       .story {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 18px;
-        border: 2px gray dashed;
+        width: 90%;
         height: 70%;
-        padding: 10px;
+        color: $text-color;
         border-radius: 10px;
       }
     }

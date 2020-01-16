@@ -1,3 +1,32 @@
+.set-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.component-container {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0; }
+
+.component-layout {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.common-btn {
+  all: unset;
+  background-color: #7e583f;
+  color: #e8d6b4;
+  text-align: center;
+  cursor: pointer; }
+  .common-btn:hover {
+    color: #7e583f;
+    background-color: #fff; }
+
 .reply-container {
   display: none;
   width: 100vw;
@@ -31,14 +60,14 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 90%;
-        height: 50%;
+        width: 80%;
+        height: 55%;
         color: white;
         font-size: 20px;
         white-space: pre-wrap;
         border: 2px white dashed;
         border-radius: 10px;
-        padding: 10px; }
+        padding: 20px; }
       .reply-container .content .reply-box .prev-btn {
         all: unset;
         position: absolute;
@@ -90,11 +119,11 @@
           background-color: #6e482f; }
     .reply-container .content .worry {
       position: relative;
-      width: 100%;
+      width: 95%;
       height: 0%;
       transition-duration: 1s;
-      transition-timing-function: cubic-bezier(0, 1, 1, 0.9);
-      background-color: #e8d6b4; }
+      background-color: #cebea1;
+      border: 2px #cebea1 solid; }
     .reply-container .content .bottom {
       height: 90%; }
     .reply-container .content .worry-content {
@@ -108,12 +137,9 @@
       color: #6e482f; }
       .reply-container .content .worry-content .title {
         text-align: center;
-        font-size: 22px;
+        font-size: 25px;
         font-weight: bold;
         margin-bottom: 2vw;
-        border: 2px #6e482f dashed;
-        border-radius: 10px;
-        padding: 10px;
         overflow: hidden; }
       .reply-container .content .worry-content .story {
         font-size: 18px;
@@ -121,10 +147,7 @@
         -ms-overflow-style: none;
         white-space: pre-wrap;
         width: 100%;
-        height: 60%;
-        border: 2px #6e482f dashed;
-        border-radius: 10px;
-        padding: 10px; }
+        height: 70%; }
         .reply-container .content .worry-content .story::-webkit-scrollbar {
           display: none; }
     .reply-container .content .arrow-box {
@@ -132,8 +155,8 @@
       width: 100%;
       height: 10%;
       margin: 0 auto;
-      background-color: #e8d6b4;
-      border-radius: 0 0 1vw 1vw;
+      background-image: url(../../public/assets/image/paper.png);
+      background-size: 100% 100%;
       cursor: pointer; }
       .reply-container .content .arrow-box .arrow {
         position: absolute;

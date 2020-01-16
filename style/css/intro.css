@@ -1,4 +1,33 @@
 @import 'https://fonts.googleapis.com/css?family=Nanum+Brush+Script&display=swap';
+.set-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.component-container {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0; }
+
+.component-layout {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.common-btn {
+  all: unset;
+  background-color: #7e583f;
+  color: #e8d6b4;
+  text-align: center;
+  cursor: pointer; }
+  .common-btn:hover {
+    color: #7e583f;
+    background-color: #fff; }
+
 .intro-container {
   width: 100vw;
   height: 100vh;

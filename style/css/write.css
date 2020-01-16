@@ -1,63 +1,69 @@
-.write-container {
+.set-center, .write-container .form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.component-container, .write-container {
   display: none;
   width: 100vw;
   height: 100vh;
   position: fixed;
   left: 0;
   top: 0; }
-  .write-container .layout {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); }
-  .write-container .form {
+
+.component-layout, .write-container .layout {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.common-btn, .write-container .form .submit {
+  all: unset;
+  background-color: #7e583f;
+  color: #e8d6b4;
+  text-align: center;
+  cursor: pointer; }
+  .common-btn:hover, .write-container .form .submit:hover {
+    color: #7e583f;
+    background-color: #fff; }
+
+.write-container .form {
+  width: 50vw;
+  height: 60vh;
+  background-image: url(../../public/assets/image/menu-bgi.png);
+  background-size: 100% 100%;
+  font-size: 2rem; }
+  .write-container .form .title {
+    all: unset;
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50vw;
-    height: 60vh;
-    background-image: url(../../public/assets/image/menu-bgi.png);
-    background-size: 100% 100%;
+    transform: translateX(-50%);
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.2);
     font-size: 2rem; }
-    .write-container .form .title {
-      all: unset;
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      background-color: rgba(255, 255, 255, 0.2);
-      font-size: 2rem; }
-    .write-container .form .story {
-      all: unset;
-      position: absolute;
-      bottom: 25%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 50%;
-      background-color: rgba(255, 255, 255, 0.2);
-      font-size: 1rem; }
-    .write-container .form .notice {
-      position: absolute;
-      bottom: 20%;
-      width: 100%;
-      color: red;
-      font-size: 20px;
-      text-align: center; }
-    .write-container .form .submit {
-      all: unset;
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 5vw;
-      height: 2vw;
-      border-radius: 0.5vw;
-      background-color: #6e482f;
-      color: #e8d6b4;
-      text-align: center;
-      cursor: pointer; }
-      .write-container .form .submit:hover {
-        color: #6e482f;
-        background-color: white; }
+  .write-container .form .story {
+    all: unset;
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 1rem; }
+  .write-container .form .notice {
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    color: red;
+    font-size: 20px;
+    text-align: center; }
+  .write-container .form .submit {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5vw;
+    height: 2vw;
+    border-radius: 0.5vw; }

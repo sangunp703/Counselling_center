@@ -92,8 +92,6 @@ export default class Talk extends Component {
     return (
       <div className='talk-container'>
         <div className='layout' onClick={e => this.closeBox(e)}></div>
-        <div className='big-bubble'></div>
-        <div className='small-bubble'></div>
         <div className='content'>
           <div className='worry-box'>
             <div className='title'></div>
