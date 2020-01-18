@@ -16,6 +16,7 @@ export default class Check extends Component {
   }
 
   componentDidMount() {
+    // 입장시 문이 열리는 애니메이션 시작
     this.openDoor()
   }
 
@@ -40,6 +41,7 @@ export default class Check extends Component {
   }
 
   jumpCallback(jumpData) {
+    // 이동 전 문이 닫히고 잠시후 다음페이지로 이동
     this.closeDoor()
     setTimeout(e => {
       this.setState({
@@ -57,6 +59,7 @@ export default class Check extends Component {
   }
 
   partIn(e) {
+    // 각 파트에 대해서 마우스가 올라간 요소에 active 클래스 부여
     e.currentTarget.parentNode.querySelectorAll('.part').forEach(element => {
       element.classList.remove('active')
     })
@@ -64,6 +67,7 @@ export default class Check extends Component {
   }
 
   talkToSecurity(e) {
+    // 사용 가이드 보이게
     e.currentTarget.parentNode.querySelectorAll('span').forEach(element => {
       element.style.opacity = 1
     })

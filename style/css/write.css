@@ -27,6 +27,17 @@
     color: #7e583f;
     background-color: #fff; }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.hidden-scroll {
+  overflow-y: scroll;
+  -ms-overflow-style: none; }
+  .hidden-scroll::-webkit-scrollbar {
+    display: none; }
+
 .write-container .form {
   width: 50vw;
   height: 60vh;
@@ -41,7 +52,8 @@
     transform: translateX(-50%);
     width: 80%;
     background-color: rgba(255, 255, 255, 0.2);
-    font-size: 2rem; }
+    font-size: 2rem;
+    color: #7e583f; }
   .write-container .form .story {
     all: unset;
     position: absolute;
@@ -51,7 +63,8 @@
     width: 80%;
     height: 50%;
     background-color: rgba(255, 255, 255, 0.2);
-    font-size: 1rem; }
+    font-size: 1rem;
+    color: #8e684f; }
   .write-container .form .notice {
     position: absolute;
     bottom: 20%;

@@ -4,6 +4,7 @@ $btn-back-color-hover: #fff;
 $btn-color-hover: #7e583f;
 $warning-color: red;
 $text-color: #7e583f;
+$text-color-bright: #8e684f;
 
 .set-center {
   position: absolute;
@@ -37,5 +38,20 @@ $text-color: #7e583f;
   &:hover {
     color: $btn-color-hover;
     background-color: $btn-back-color-hover;
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden-scroll {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

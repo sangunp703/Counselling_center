@@ -1,17 +1,10 @@
 @import 'variable.scss';
 
 .talk-container {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
+  @extend .component-container;
 
   .layout {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    @extend .component-layout;
   }
 
   .content {
@@ -21,16 +14,10 @@
     transform: translateX(-50%);
     width: 40%;
     height: 60%;
-    background-color: white;
     border-radius: 1vw;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
+    @extend .hidden-scroll;
     background-image: url(../../public/assets/image/leather.jpg);
     background-size: contain;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
 
     .worry-box {
       @extend .set-center;
@@ -49,6 +36,7 @@
         color: $text-color;
         overflow: hidden;
       }
+
       .story {
         position: absolute;
         top: 20%;
@@ -57,8 +45,10 @@
         font-size: 18px;
         width: 90%;
         height: 70%;
-        color: $text-color;
+        color: $text-color-bright;
         border-radius: 10px;
+        white-space: pre-wrap;
+        @extend .hidden-scroll;
       }
     }
   }
@@ -71,7 +61,7 @@
     height: 25%;
     border-radius: 1vw;
     padding: 1vw;
-    background-color: #e8d6b4;
+    background-color: $btn-color;
 
     .reply {
       all: unset;
@@ -82,45 +72,27 @@
       height: 50%;
       padding: 20px;
       border-radius: 10px;
-      color: #7e583f;
+      color: $text-color;
       background-color: rgba($color: #fff, $alpha: 0.2);
     }
     .submit {
-      all: unset;
+      @extend .common-btn;
       position: absolute;
       left: 50%;
       bottom: 5%;
       transform: translateX(-50%);
-      background-color: #7e583f;
-      color: #e8d6b4;
       width: 7%;
       border-radius: 10px;
       padding: 10px;
-      text-align: center;
-      cursor: pointer;
-
-      &:hover {
-        background-color: white;
-        color: #7e583f;
-      }
     }
     .change {
-      all: unset;
-      color: #e8d6b4;
-      background-color: #7e583f;
+      @extend .common-btn;
       position: absolute;
       right: 5%;
       bottom: 5%;
       width: 7%;
       border-radius: 10px;
       padding: 10px;
-      text-align: center;
-      cursor: pointer;
-
-      &:hover {
-        background-color: white;
-        color: #7e583f;
-      }
     }
   }
 }

@@ -45,19 +45,23 @@ export default class Talk extends Component {
         if (err) {
           return
         }
-        if (res.body.msg === 'fail') {
+        if (res.body.msg === 'complete') {
+          const talk_container = document.querySelector('.talk-container')
+          const title = talk_container.querySelector('.title')
+          const story = talk_container.querySelector('.story')
+
+          title.innerHTML = res.body.title
+          story.innerHTML = res.body.story
+          this.setState({
+            content: { author: res.body.author, type: res.body.type }
+          })
+        } else {
           title.innerHTML = '다른 사용자가 남긴 고민이 없습니다'
+          this.setState({
+            content: { author: '', type: '' }
+          })
           return
         }
-        const talk_container = document.querySelector('.talk-container')
-        const title = talk_container.querySelector('.title')
-        const story = talk_container.querySelector('.story')
-
-        title.innerHTML = res.body.title
-        story.innerHTML = res.body.story
-        this.setState({
-          content: { author: res.body.author, type: res.body.type }
-        })
       })
   }
 
@@ -66,25 +70,27 @@ export default class Talk extends Component {
     const reply = talk_container.querySelector('.reply')
     if (reply.value.length > 0) {
       if (confirm('댓글을 남기시겠습니까?')) {
-        if (this.state.content.author !== '' && this.state.content.type !== '') {
-          request
-            .post('/api/writeReply')
-            .query({
-              author: this.state.content.author,
-              type: this.state.content.type,
-              reply: reply.value
-            })
-            .end((err, res) => {
-              if (err) {
-                return
-              }
+        request
+          .post('/api/writeReply')
+          .query({
+            author: this.state.content.author,
+            type: this.state.content.type,
+            reply: reply.value
+          })
+          .end((err, res) => {
+            if (err) {
+              return
+            }
+            if (res.body.msg === 'complete') {
               reply.value = ''
               this.randomPick()
-            })
-        } else {
-          alert('댓글을 남길 수 없습니다')
-        }
+            } else {
+              alert('댓글을 남길 수 없습니다')
+            }
+          })
       }
+    } else {
+      alert('한 글자 이상 입력하세요')
     }
   }
 
@@ -95,7 +101,7 @@ export default class Talk extends Component {
         <div className='content'>
           <div className='worry-box'>
             <div className='title'></div>
-            <div className='story'></div>
+            <pre className='story'></pre>
           </div>
         </div>
         <div className='reply-box'>

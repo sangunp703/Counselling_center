@@ -26,3 +26,14 @@
   .common-btn:hover {
     color: #7e583f;
     background-color: #fff; }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.hidden-scroll {
+  overflow-y: scroll;
+  -ms-overflow-style: none; }
+  .hidden-scroll::-webkit-scrollbar {
+    display: none; }

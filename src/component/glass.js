@@ -23,6 +23,7 @@ export default class Write extends Component {
   }
 
   glassSelect(index, num) {
+    // 세션에 총 댓글 수와 현재 댓글 인덱스 저장
     window.sessionStorage.reply_num = num
     window.sessionStorage.reply_index = index
     this.props.showCallback('reply')
@@ -35,12 +36,15 @@ export default class Write extends Component {
   createDiv(index, num, watched) {
     const div = document.createElement('div')
     const img = document.createElement('img')
+    // 해당 술잔 이미지 배경으로 설정
     img.src = '/assets/image/' + window.sessionStorage.type + '-glass.png'
     const span = document.createElement('span')
     span.innerHTML = index
     div.appendChild(img)
     div.appendChild(span)
+    // 댓글 선택 이벤트 연결
     div.addEventListener('click', this.glassSelect.bind(this, index, num))
+    // 이미 본 댓글의 경우 어둡게 표현
     if (watched) {
       div.classList.add('watched')
     }
@@ -58,17 +62,19 @@ export default class Write extends Component {
       .end((err, res) => {
         if (err) {
           return
-        } else {
+        }
+        if (res.body.msg === 'complete') {
           const glass_container = document.querySelector('.glass-container')
           const grid = glass_container.querySelector('.grid')
           const none = glass_container.querySelector('.none')
           const count = grid.childElementCount
 
-          // 10개씩 불러오되 댓글이 10개 이하일 경우 그 수만 큼만 출력
+          // 10개씩 불러오되 댓글이 10개 이하일 경우 그 수만큼만 출력
           const x = res.body.reply.length >= count + 10 ? 10 : res.body.reply.length - count
           for (let i = 0; i < x; i++) {
             grid.appendChild(this.createDiv(count + i + 1, res.body.reply.length, res.body.reply[count + i].watched))
           }
+          // 댓글이 없을 경우 안내 메시지 보이게
           if (!grid.hasChildNodes()) {
             none.style.display = 'block'
           } else {

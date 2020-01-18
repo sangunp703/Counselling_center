@@ -17,13 +17,8 @@
   .intro-box {
     width: 60vw;
     height: 25vw;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend .set-center;
+    @extend .flex-center;
     border: 0.25vw solid #222;
     border-radius: 1vw;
     transition-duration: 1s;

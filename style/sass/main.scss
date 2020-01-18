@@ -55,12 +55,10 @@
     bottom: 7%;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend .flex-center;
     border-radius: 5px;
     box-shadow: 2px 2px 5px 1px black;
-    color: #e8d6b4;
+    color: $btn-color;
     font-size: 1.5vw;
     cursor: pointer;
 

@@ -25,7 +25,7 @@ export default class Write extends Component {
           if (err) {
             return
           }
-          if (res.body.msg === 'complete') {
+          if (res.body.msg === 'exist') {
             // 해당 컨텐츠가 있는 경우 수정 하기 이벤트
             title.value = res.body.title
             story.value = res.body.story
@@ -46,6 +46,7 @@ export default class Write extends Component {
       const title = write_container.querySelector('.title')
       const story = write_container.querySelector('.story')
       const notice = write_container.querySelector('.notice')
+      // 내용 초기화 후 이동
       notice.innerHTML = ''
       title.value = ''
       story.value = ''
@@ -61,28 +62,51 @@ export default class Write extends Component {
     const notice = write_container.querySelector('.notice')
 
     notice.innerHTML = ''
+    // 글 쓰기 및 글 수정 API 요청
     action = '/api/' + action
 
     // 글을 적었을 때만 데이터베이스에 저장
     if (title.value.length > 0 && story.value.length > 0) {
       if (confirm('글을 저장하시겠습니까?')) {
+        // 세션 체크하여 승인되지 못하면 이전페이지로 이동
         request
-          .post(action)
+          .get('/api/check')
           .query({
             id: window.sessionStorage.id,
-            title: title.value,
-            story: story.value,
-            type: window.sessionStorage.type
+            token: window.sessionStorage.token
           })
           .end((err, res) => {
             if (err) {
+              alert('세션이 만료되었습니다.')
+              this.props.jump('/check')
               return
             }
-            submit.parentNode.replaceChild(new_submit, submit) // 현 버튼 요소를 이벤트 추가 전 요소로 변경하는 것으로 이벤트 삭제
-            notice.innerHTML = ''
-            title.value = ''
-            story.value = ''
-            this.props.showCallback('menu')
+            if (res.body.msg === 'denied') {
+              alert('세션이 만료되었습니다.')
+              this.props.jump('/check')
+              return
+            }
+            request
+              .post(action)
+              .query({
+                id: window.sessionStorage.id,
+                title: title.value,
+                story: story.value,
+                type: window.sessionStorage.type
+              })
+              .end((err, res) => {
+                if (err) {
+                  return
+                }
+                if (res.body.msg === 'complete') {
+                  submit.parentNode.replaceChild(new_submit, submit) // 현 버튼 요소를 이벤트 추가 전 요소로 변경하는 것으로 이벤트 삭제
+                  // 내용 초기화 후 이동
+                  notice.innerHTML = ''
+                  title.value = ''
+                  story.value = ''
+                  this.props.showCallback('menu')
+                }
+              })
           })
       }
     } else {

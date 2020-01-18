@@ -16,10 +16,13 @@ export default class Main extends Component {
       show: 'none'
     }
     this.showCallback = this.showCallback.bind(this)
+    this.jumpCallback = this.jumpCallback.bind(this)
   }
 
   componentDidMount() {
+    // 입장시 문이 열리는 애니메이션 시작
     this.openDoor()
+    // 세션 체크하여 승인되지 못하면 이전페이지로 이동
     request
       .get('/api/check')
       .query({
@@ -46,6 +49,12 @@ export default class Main extends Component {
     })
   }
 
+  jumpCallback(jumpData) {
+    this.setState({
+      jump: jumpData
+    })
+  }
+
   openMenuBox(e) {
     this.setState({ show: 'menu' })
   }
@@ -53,6 +62,7 @@ export default class Main extends Component {
   openTalkBox(e) {
     this.setState({ show: 'talk' })
   }
+
   openDoor() {
     const left_door = document.querySelector('.left-door')
     const right_door = document.querySelector('.right-door')
@@ -62,6 +72,7 @@ export default class Main extends Component {
 
   logout() {
     if (confirm('로그아웃 하시겠습니까?')) {
+      // 세션 내용 제거후 첫 페이지로 이동
       window.sessionStorage.removeItem('id')
       window.sessionStorage.removeItem('token')
       window.sessionStorage.removeItem('type')
@@ -84,10 +95,10 @@ export default class Main extends Component {
           <span>메 뉴</span>
         </div>
         <img className='logout' src='' alt='exit' onClick={e => this.logout(e)} />
-        <Menu show={this.state.show} showCallback={this.showCallback} />
+        <Menu jump={this.jumpCallback} show={this.state.show} showCallback={this.showCallback} />
         <Glass show={this.state.show} showCallback={this.showCallback} />
-        <Write show={this.state.show} showCallback={this.showCallback} />
-        <Reply show={this.state.show} showCallback={this.showCallback} />
+        <Write jump={this.jumpCallback} show={this.state.show} showCallback={this.showCallback} />
+        <Reply jump={this.jumpCallback} show={this.state.show} showCallback={this.showCallback} />
         <Talk show={this.state.show} showCallback={this.showCallback} />
       </div>
     )

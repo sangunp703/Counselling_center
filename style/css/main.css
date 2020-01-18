@@ -27,6 +27,17 @@
     color: #7e583f;
     background-color: #fff; }
 
+.flex-center, .main-container .menu-img {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.hidden-scroll {
+  overflow-y: scroll;
+  -ms-overflow-style: none; }
+  .hidden-scroll::-webkit-scrollbar {
+    display: none; }
+
 .main-container {
   width: 100vw;
   height: 100vh;
@@ -75,9 +86,6 @@
     bottom: 7%;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 5px;
     box-shadow: 2px 2px 5px 1px black;
     color: #e8d6b4;

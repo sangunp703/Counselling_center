@@ -18,6 +18,7 @@ export default class Intro extends Component {
   }
 
   enter() {
+    // 이동 전 문이 닫히고 잠시후 다음페이지로 이동
     this.closeDoor()
     setTimeout(e => {
       this.setState({ jump: '/check' })
@@ -27,6 +28,7 @@ export default class Intro extends Component {
   animationEnd() {
     const intro_container = document.querySelector('.intro-container')
     const cover = intro_container.querySelector('.cover')
+    // 애니메이션이 끝나면 가림막 제거하여 hover, click 가능하게
     cover.style.display = 'none'
   }
 

@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%); }
 
-.component-container {
+.component-container, .talk-container {
   display: none;
   width: 100vw;
   height: 100vh;
@@ -12,120 +12,101 @@
   left: 0;
   top: 0; }
 
-.component-layout {
+.component-layout, .talk-container .layout {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); }
 
-.common-btn {
+.common-btn, .talk-container .reply-box .submit, .talk-container .reply-box .change {
   all: unset;
   background-color: #7e583f;
   color: #e8d6b4;
   text-align: center;
   cursor: pointer; }
-  .common-btn:hover {
+  .common-btn:hover, .talk-container .reply-box .submit:hover, .talk-container .reply-box .change:hover {
     color: #7e583f;
     background-color: #fff; }
 
-.talk-container {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0; }
-  .talk-container .layout {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0); }
-  .talk-container .content {
-    position: absolute;
-    top: 5%;
-    left: 35%;
-    transform: translateX(-50%);
-    width: 40%;
-    height: 60%;
-    background-color: white;
-    border-radius: 1vw;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    background-image: url(../../public/assets/image/leather.jpg);
-    background-size: contain; }
-    .talk-container .content::-webkit-scrollbar {
-      display: none; }
-    .talk-container .content .worry-box {
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.hidden-scroll, .talk-container .content, .talk-container .content .worry-box .story {
+  overflow-y: scroll;
+  -ms-overflow-style: none; }
+  .hidden-scroll::-webkit-scrollbar, .talk-container .content::-webkit-scrollbar, .talk-container .content .worry-box .story::-webkit-scrollbar {
+    display: none; }
+
+.talk-container .content {
+  position: absolute;
+  top: 5%;
+  left: 35%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 60%;
+  border-radius: 1vw;
+  background-image: url(../../public/assets/image/leather.jpg);
+  background-size: contain; }
+  .talk-container .content .worry-box {
+    width: 90%;
+    height: 90%;
+    background-image: url(../../public/assets/image/menu-bgi.png);
+    background-size: 100% 100%; }
+    .talk-container .content .worry-box .title {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 25px;
+      font-weight: bold;
+      color: #7e583f;
+      overflow: hidden; }
+    .talk-container .content .worry-box .story {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
       width: 90%;
-      height: 90%;
-      background-image: url(../../public/assets/image/menu-bgi.png);
-      background-size: 100% 100%; }
-      .talk-container .content .worry-box .title {
-        position: absolute;
-        top: 5%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 25px;
-        font-weight: bold;
-        color: #7e583f;
-        overflow: hidden; }
-      .talk-container .content .worry-box .story {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 18px;
-        width: 90%;
-        height: 70%;
-        color: #7e583f;
-        border-radius: 10px; }
-  .talk-container .reply-box {
+      height: 70%;
+      color: #8e684f;
+      border-radius: 10px;
+      white-space: pre-wrap; }
+
+.talk-container .reply-box {
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 25%;
+  border-radius: 1vw;
+  padding: 1vw;
+  background-color: #e8d6b4; }
+  .talk-container .reply-box .reply {
+    all: unset;
     position: absolute;
-    bottom: 3%;
     left: 50%;
     transform: translateX(-50%);
-    width: 70%;
-    height: 25%;
-    border-radius: 1vw;
-    padding: 1vw;
-    background-color: #e8d6b4; }
-    .talk-container .reply-box .reply {
-      all: unset;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 85%;
-      height: 50%;
-      padding: 20px;
-      border-radius: 10px;
-      color: #7e583f;
-      background-color: rgba(255, 255, 255, 0.2); }
-    .talk-container .reply-box .submit {
-      all: unset;
-      position: absolute;
-      left: 50%;
-      bottom: 5%;
-      transform: translateX(-50%);
-      background-color: #7e583f;
-      color: #e8d6b4;
-      width: 7%;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      cursor: pointer; }
-      .talk-container .reply-box .submit:hover {
-        background-color: white;
-        color: #7e583f; }
-    .talk-container .reply-box .change {
-      all: unset;
-      color: #e8d6b4;
-      background-color: #7e583f;
-      position: absolute;
-      right: 5%;
-      bottom: 5%;
-      width: 7%;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      cursor: pointer; }
-      .talk-container .reply-box .change:hover {
-        background-color: white;
-        color: #7e583f; }
+    width: 85%;
+    height: 50%;
+    padding: 20px;
+    border-radius: 10px;
+    color: #7e583f;
+    background-color: rgba(255, 255, 255, 0.2); }
+  .talk-container .reply-box .submit {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    width: 7%;
+    border-radius: 10px;
+    padding: 10px; }
+  .talk-container .reply-box .change {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    width: 7%;
+    border-radius: 10px;
+    padding: 10px; }

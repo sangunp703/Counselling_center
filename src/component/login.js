@@ -32,6 +32,7 @@ export default class Login extends Component {
     } else if (element === 'not exist') {
       notice.innerHTML = '회원정보가 틀립니다'
     }
+    // 양 옆으로 흔들리는 애니메이션
     apply.right = '7%'
     setTimeout(() => {
       apply.right = '3%'
@@ -43,6 +44,7 @@ export default class Login extends Component {
 
   login(e) {
     const login_container = document.querySelector('.login-container')
+    // 아이디와 비밀번호가 적혀있는지 확인
     const id = login_container.querySelector('.id').value
     if (id === '') {
       this.deny('id')
@@ -68,6 +70,7 @@ export default class Login extends Component {
           this.deny('not exist')
           return
         } else {
+          // 세션에 아이디와 토큰 저장
           window.sessionStorage['id'] = id
           window.sessionStorage['token'] = res.body.token
 
@@ -79,6 +82,7 @@ export default class Login extends Component {
           applyStyle.opacity = '1'
           applyStyle.bottom = '5%'
 
+          // 트랜지션 종료 후 점프 값 전달
           setTimeout(() => {
             this.props.jump('/main')
           }, 1200)
@@ -87,6 +91,7 @@ export default class Login extends Component {
   }
 
   loginEnter(e) {
+    // Enter키가 눌렸을 경우 login 이벤트 실행
     if (e.key === 'Enter') {
       this.login(e)
     }

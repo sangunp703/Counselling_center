@@ -1,26 +1,16 @@
 @import 'variable.scss';
 
 .reply-container {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
+  @extend .component-container;
 
   .layout {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0.5, 0.75, 1, 0.8);
+    @extend .component-layout;
   }
 
   .content {
     width: 50vw;
     height: 60vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @extend .set-center;
     background-image: url(../../public/assets/image/leather.jpg);
     background-repeat: repeat;
     background-size: contain;
@@ -34,10 +24,7 @@
       height: 100%;
 
       .reply {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        @extend .set-center;
         width: 80%;
         height: 55%;
         color: white;
@@ -49,46 +36,28 @@
       }
 
       .prev-btn {
-        all: unset;
+        @extend .common-btn;
         position: absolute;
         bottom: 5%;
-        left: 5%;
+        left: 8%;
         width: 5vw;
         height: 2vw;
         border-radius: 0.5vw;
-        background-color: #e8d6b4;
-        color: #6e482f;
-        text-align: center;
         font-weight: bold;
-        cursor: pointer;
-
-        &:hover {
-          color: #e8d6b4;
-          background-color: #6e482f;
-        }
       }
       .next-btn {
-        all: unset;
+        @extend .common-btn;
         position: absolute;
         bottom: 5%;
-        right: 5%;
+        right: 8%;
         width: 5vw;
         height: 2vw;
         border-radius: 0.5vw;
-        background-color: #e8d6b4;
-        color: #6e482f;
-        text-align: center;
         font-weight: bold;
-        cursor: pointer;
-
-        &:hover {
-          color: #e8d6b4;
-          background-color: #6e482f;
-        }
       }
 
       .delete-btn {
-        all: unset;
+        @extend .common-btn;
         position: absolute;
         bottom: 5%;
         left: 50%;
@@ -96,26 +65,19 @@
         width: 5vw;
         height: 2vw;
         border-radius: 0.5vw;
-        background-color: #e8d6b4;
-        color: #6e482f;
-        text-align: center;
         font-weight: bold;
-        cursor: pointer;
-
-        &:hover {
-          color: #e8d6b4;
-          background-color: #6e482f;
-        }
       }
     }
 
     .worry {
       position: relative;
-      width: 95%;
+      width: 90%;
       height: 0%;
       transition-duration: 1s;
       background-color: #cebea1;
+      box-sizing: border-box;
       border: 2px #cebea1 solid;
+      margin: 0 auto;
     }
 
     .bottom {
@@ -124,13 +86,10 @@
 
     .worry-content {
       display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      @extend .set-center;
       width: 80%;
       height: 80%;
-      color: #6e482f;
+      color: $text-color;
 
       .title {
         text-align: center;
@@ -142,32 +101,24 @@
 
       .story {
         font-size: 18px;
-        overflow-y: scroll;
-        -ms-overflow-style: none;
+        @extend .hidden-scroll;
         white-space: pre-wrap;
         width: 100%;
         height: 70%;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
       }
     }
 
     .arrow-box {
       position: relative;
-      width: 100%;
+      margin-left: 5%;
+      width: 95%;
       height: 10%;
-      margin: 0 auto;
       background-image: url(../../public/assets/image/paper.png);
       background-size: 100% 100%;
       cursor: pointer;
 
       .arrow {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        @extend .set-center;
         width: 10%;
         height: auto;
       }

@@ -35,6 +35,7 @@ export default class Join extends Component {
     } else if (element === 'email') {
       notice.innerHTML = '올바른 이메일을 입력하세요'
     }
+    // 양 옆으로 흔들리는 애니메이션
     applyStyle.left = '48%'
     setTimeout(() => {
       applyStyle.left = '52%'
@@ -46,17 +47,18 @@ export default class Join extends Component {
 
   subscription(e) {
     const join_container = document.querySelector('.join-container')
+    // 각 요소가 형식에 맞는지 확인
     const id = join_container.querySelector('.id').value
     if (!id.match(/^[a-zA-Z0-9]{6,20}$/)) {
       this.deny('id')
       return
     }
     const pw = join_container.querySelector('.pw').value
-    const pwCheck = join_container.querySelector('.pwCheck').value
     if (!pw.match(/^.{6,20}$/)) {
       this.deny('password')
       return
     }
+    const pwCheck = join_container.querySelector('.pwCheck').value
     if (pw !== pwCheck) {
       this.deny('mismatch')
       return
@@ -82,6 +84,7 @@ export default class Join extends Component {
           this.deny('exist')
           return
         } else {
+          // 세션에 아이디와 토큰 저장
           window.sessionStorage['id'] = id
           window.sessionStorage['token'] = res.body.token
 
@@ -93,6 +96,7 @@ export default class Join extends Component {
           applyStyle.opacity = '1'
           applyStyle.bottom = '0%'
 
+          // 트랜지션 종료 후 점프 값 전달
           setTimeout(() => {
             this.props.jump('/main')
           }, 1200)
@@ -101,6 +105,7 @@ export default class Join extends Component {
   }
 
   subscriptionEnter(e) {
+    // Enter키가 눌렸을 경우 subscription 이벤트 실행
     if (e.key === 'Enter') {
       this.subscription(e)
     }
@@ -110,6 +115,7 @@ export default class Join extends Component {
     const join_container = document.querySelector('.join-container')
     const notice = join_container.querySelector('.notice')
     const value = e.currentTarget.value
+    // 값이 바뀔 때마다 형식에 맞는지 확인
     if (e.currentTarget.classList.contains('id')) {
       if (!value.match(/^[a-zA-Z0-9]{6,20}$/)) {
         notice.innerHTML = '아이디는 6자 이상 20자 이하의 영어와 숫자로 구성됩니다'

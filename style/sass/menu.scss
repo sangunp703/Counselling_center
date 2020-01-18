@@ -1,24 +1,14 @@
 @import 'variable.scss';
 
 .menu-container {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
+  @extend .component-container;
 
   .layout {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    @extend .component-layout;
   }
 
   .background {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @extend .set-center;
     width: 60%;
     height: 70%;
     background-image: url(../../public/assets/image/leather.jpg);
@@ -27,16 +17,13 @@
   }
 
   .menu {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @extend .set-center;
     width: 98%;
     height: 98%;
     background-image: url(../../public/assets/image/menu-bgi.png);
     background-size: 100% 100%;
     text-align: center;
-    color: #6e482f;
+    color: $text-color;
 
     .type {
       font-size: 40px;
@@ -46,10 +33,7 @@
   }
 
   .content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    @extend .set-center;
     width: 85%;
     height: 70%;
     display: flex;
@@ -89,7 +73,7 @@
     .worry {
       width: 60%;
       height: 90%;
-      border-left: 2px #7e583f dashed;
+      border-left: 2px $text-color dashed;
       padding: 0 1vw;
 
       .title {
@@ -102,16 +86,11 @@
       .story {
         text-align: left;
         font-size: 18px;
-        color: #8e684f;
+        color: $text-color-bright;
         width: 100%;
         height: 70%;
-        overflow-y: scroll;
-        -ms-overflow-style: none;
+        @extend .hidden-scroll;
         white-space: pre-wrap;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
       }
     }
   }
@@ -121,21 +100,18 @@
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
+    @extend .flex-center;
 
     & > button {
-      all: unset;
+      @extend .common-btn;
       width: 5vw;
       height: 2vw;
-      color: #e8d6b4;
       margin: 0 1vw;
       border-radius: 0.5vw;
-      background-color: #7e583f;
-      cursor: pointer;
 
       &:hover {
-        background-color: white;
-        color: #7e583f;
+        background-color: $btn-back-color-hover;
+        color: $btn-color-hover;
       }
     }
   }

@@ -34,16 +34,17 @@ export default class Menu extends Component {
       glass.src = '/assets/image/' + alcohols[this.state.index] + '-glass.png'
 
       request
-        .get('/api/getMyWorry')
+        .get('/api/getContent')
         .query({
-          type: this.state.index,
-          id: window.sessionStorage.id
+          id: window.sessionStorage.id,
+          type: alcohols[this.state.index]
         })
         .end((err, res) => {
           if (err) {
             return
           }
           if (res.body.msg === 'not exist') {
+            // 해당 술에 글이 없으면 글 상자 안보이게하고 글 쓰기 이벤트 연결
             worry.style.display = 'none'
             reply_count.style.display = 'none'
             btn_box.style.display = 'none'
@@ -51,6 +52,7 @@ export default class Menu extends Component {
             content.removeEventListener('click', this.showWrite)
             content.addEventListener('click', this.showWrite)
           } else {
+            // 해당 술에 글이 있으면 내용 출력하고 댓글 선택 이벤트 연결
             worry.style.display = 'block'
             reply_count.style.display = 'block'
             btn_box.style.display = 'block'
@@ -107,19 +109,41 @@ export default class Menu extends Component {
 
   deleteContent() {
     if (confirm('글을 삭제하시겠습니까?')) {
+      // 세션 체크하여 승인되지 못하면 이전페이지로 이동
       request
-        .post('/api/deleteContent')
+        .get('/api/check')
         .query({
-          author: window.sessionStorage.id,
-          type: alcohols[this.state.index]
+          id: window.sessionStorage.id,
+          token: window.sessionStorage.token
         })
         .end((err, res) => {
           if (err) {
+            alert('세션이 만료되었습니다.')
+            this.props.jump('/check')
             return
           }
-          this.setState({
-            index: this.state.index
-          })
+          if (res.body.msg === 'denied') {
+            alert('세션이 만료되었습니다.')
+            this.props.jump('/check')
+            return
+          }
+          request
+            .post('/api/deleteContent')
+            .query({
+              author: window.sessionStorage.id,
+              type: alcohols[this.state.index]
+            })
+            .end((err, res) => {
+              if (err) {
+                return
+              }
+              if (res.body.msg === 'complete') {
+                // 다시 렌더링 하기
+                this.setState({
+                  index: this.state.index
+                })
+              }
+            })
         })
     }
   }
@@ -130,7 +154,7 @@ export default class Menu extends Component {
         <div className='layout' onClick={e => this.closeBox(e)}></div>
         <div className='background'>
           <div className='menu'>
-            <h1 className='type'>M E N U</h1>
+            <h1 className='type'></h1>
             <div className='content'>
               <div className='alcohol'>
                 <img className='bottle' src='' alt='bottle' />
@@ -138,8 +162,8 @@ export default class Menu extends Component {
                 <span className='reply-count'>X 0</span>
               </div>
               <div className='worry'>
-                <h2 className='title'>it's sad</h2>
-                <pre className='story'>blah blah</pre>
+                <h2 className='title'></h2>
+                <pre className='story'></pre>
               </div>
             </div>
             <div className='btn-box'>

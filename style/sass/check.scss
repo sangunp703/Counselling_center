@@ -81,10 +81,7 @@
     }
 
     .login-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      @extend .set-center;
       content: url(../../public/assets/image/membership-card-sample.png);
       width: 25vw;
       height: 16.25vw;
@@ -100,10 +97,7 @@
     }
 
     .join-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      @extend .set-center;
       content: url(../../public/assets/image/identity-card-sample.png);
       width: 25vw;
       height: auto;
