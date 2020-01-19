@@ -104,7 +104,9 @@ export default class Write extends Component {
             <div className='none'>댓글이 없습니다</div>
             <div className='grid'></div>
           </div>
-          <div className='scroll-img'></div>
+          <div className='scroll-frame'>
+            <div className='scroll-img'></div>
+          </div>
         </div>
       </div>
     )

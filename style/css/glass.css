@@ -23,8 +23,11 @@
   color: #e8d6b4;
   text-align: center;
   cursor: pointer;
-  font-size: 1vw;
-  font-weight: bold; }
+  font-size: 20px;
+  font-weight: bold;
+  width: 7vw;
+  padding: 10px;
+  border-radius: 0.5vw; }
   .common-btn:hover {
     color: #7e583f;
     background-color: #fff; }
@@ -84,12 +87,31 @@
         font-weight: bold; }
     .glass-container .content .grid .watched {
       background-color: rgba(255, 255, 255, 0.3); }
-  .glass-container .content .scroll-img {
+  .glass-container .content .scroll-frame {
     position: absolute;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: 2%;
-    height: 5%;
-    margin: 0 auto;
-    background-color: white; }
+    width: 1vw;
+    height: 2vw;
+    border-radius: 1vw;
+    border: 2px solid white; }
+    .glass-container .content .scroll-frame .scroll-img {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-radius: 1vw;
+      border: 3px solid white;
+      opacity: 1;
+      animation: scroll infinite 1.5s; }
+
+@keyframes scroll {
+  0% {
+    top: 5%;
+    opacity: 1; }
+  100% {
+    top: 75%;
+    opacity: 0.1; } }

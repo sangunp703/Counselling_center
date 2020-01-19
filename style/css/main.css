@@ -1,3 +1,4 @@
+@import 'https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap';
 .set-center {
   position: absolute;
   top: 50%;
@@ -23,8 +24,11 @@
   color: #e8d6b4;
   text-align: center;
   cursor: pointer;
-  font-size: 1vw;
-  font-weight: bold; }
+  font-size: 20px;
+  font-weight: bold;
+  width: 7vw;
+  padding: 10px;
+  border-radius: 0.5vw; }
   .common-btn:hover {
     color: #7e583f;
     background-color: #fff; }
@@ -45,7 +49,8 @@
   height: 100vh;
   background: url(../../public/assets/image/bar.jpg);
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+  font-family: 'Nanum Pen Script', cursive; }
   .main-container .layout-left {
     position: absolute;
     left: 0;

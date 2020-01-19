@@ -23,8 +23,11 @@
   color: #e8d6b4;
   text-align: center;
   cursor: pointer;
-  font-size: 1vw;
-  font-weight: bold; }
+  font-size: 20px;
+  font-weight: bold;
+  width: 7vw;
+  padding: 10px;
+  border-radius: 0.5vw; }
   .common-btn:hover, .menu-container .btn-box > button:hover {
     color: #7e583f;
     background-color: #fff; }
@@ -55,7 +58,7 @@
   text-align: center;
   color: #7e583f; }
   .menu-container .menu .type {
-    font-size: 2vw;
+    font-size: 40px;
     font-weight: bold;
     margin-top: 1.5vw; }
 
@@ -84,7 +87,7 @@
       width: 20%;
       height: auto; }
     .menu-container .content .alcohol .reply-count {
-      font-size: 1.5vw;
+      font-size: 2vw;
       font-weight: bold; }
   .menu-container .content .worry {
     width: 60%;
@@ -92,17 +95,19 @@
     border-left: 2px #7e583f dashed;
     padding: 0 1vw; }
     .menu-container .content .worry .title {
-      font-size: 1.3vw;
+      font-size: 30px;
       font-weight: bold;
       margin-bottom: 2vw;
+      padding: 10px;
       overflow: hidden; }
     .menu-container .content .worry .story {
       text-align: left;
-      font-size: 1vw;
+      font-size: 20px;
       color: #8e684f;
       width: 100%;
       height: 70%;
-      white-space: pre-wrap; }
+      white-space: pre-wrap;
+      padding: 10px; }
 
 .menu-container .btn-box {
   position: absolute;
@@ -110,13 +115,7 @@
   left: 50%;
   transform: translateX(-50%); }
   .menu-container .btn-box > button {
-    width: 5vw;
-    height: 2vw;
-    margin: 0 1vw;
-    border-radius: 0.5vw; }
-    .menu-container .btn-box > button:hover {
-      background-color: #fff;
-      color: #7e583f; }
+    margin: 0 1vw; }
 
 .menu-container .arrow-back {
   position: absolute;

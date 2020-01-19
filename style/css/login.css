@@ -24,8 +24,11 @@
   color: #e8d6b4;
   text-align: center;
   cursor: pointer;
-  font-size: 1vw;
-  font-weight: bold; }
+  font-size: 20px;
+  font-weight: bold;
+  width: 7vw;
+  padding: 10px;
+  border-radius: 0.5vw; }
   .common-btn:hover {
     color: #7e583f;
     background-color: #fff; }
@@ -98,5 +101,5 @@
     transform: translateX(-50%);
     display: none;
     color: #d6a039;
-    font-size: 1vw;
+    font-size: 20px;
     font-weight: bold; }

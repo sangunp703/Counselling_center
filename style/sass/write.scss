@@ -22,7 +22,9 @@
       transform: translateX(-50%);
       width: 80%;
       background-color: rgba(255, 255, 255, 0.2);
+      padding: 10px;
       font-size: $title-font-size;
+      font-weight: bold;
       color: $text-color;
     }
 
@@ -34,6 +36,7 @@
       transform: translateX(-50%);
       width: 80%;
       height: 50%;
+      padding: 10px;
       background-color: rgba(255, 255, 255, 0.2);
       font-size: $story-font-size;
       color: $text-color-bright;
@@ -54,9 +57,6 @@
       bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
-      width: 5vw;
-      height: 2vw;
-      border-radius: 0.5vw;
     }
   }
 }

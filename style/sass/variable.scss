@@ -8,11 +8,11 @@ $text-color: #7e583f;
 $text-color-bright: #8e684f;
 
 // 폰트 크기 변수
-$notice-font-size: 1vw;
-$btn-font-size: 1vw;
-$type-font-size: 2vw;
-$title-font-size: 1.3vw;
-$story-font-size: 1vw;
+$notice-font-size: 20px;
+$btn-font-size: 20px;
+$type-font-size: 40px;
+$title-font-size: 30px;
+$story-font-size: 20px;
 
 // 기본 설정
 .set-center {
@@ -45,6 +45,9 @@ $story-font-size: 1vw;
   cursor: pointer;
   font-size: $btn-font-size;
   font-weight: bold;
+  width: 7vw;
+  padding: 10px;
+  border-radius: 0.5vw;
 
   &:hover {
     color: $btn-color-hover;

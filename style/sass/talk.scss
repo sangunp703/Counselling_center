@@ -34,6 +34,7 @@
         font-size: $title-font-size;
         font-weight: bold;
         color: $text-color;
+        padding: 10px;
         overflow: hidden;
       }
 
@@ -46,6 +47,7 @@
         width: 90%;
         height: 70%;
         color: $text-color-bright;
+        padding: 10px;
         border-radius: 10px;
         white-space: pre-wrap;
         @extend .hidden-scroll;
@@ -82,18 +84,12 @@
       left: 50%;
       bottom: 5%;
       transform: translateX(-50%);
-      width: 7%;
-      border-radius: 10px;
-      padding: 10px;
     }
     .change {
       @extend .common-btn;
       position: absolute;
       right: 5%;
       bottom: 5%;
-      width: 7%;
-      border-radius: 10px;
-      padding: 10px;
     }
   }
 }

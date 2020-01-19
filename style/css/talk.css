@@ -23,8 +23,11 @@
   color: #e8d6b4;
   text-align: center;
   cursor: pointer;
-  font-size: 1vw;
-  font-weight: bold; }
+  font-size: 20px;
+  font-weight: bold;
+  width: 7vw;
+  padding: 10px;
+  border-radius: 0.5vw; }
   .common-btn:hover, .talk-container .reply-box .submit:hover, .talk-container .reply-box .change:hover {
     color: #7e583f;
     background-color: #fff; }
@@ -60,19 +63,21 @@
       top: 5%;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 1.3vw;
+      font-size: 30px;
       font-weight: bold;
       color: #7e583f;
+      padding: 10px;
       overflow: hidden; }
     .talk-container .content .worry-box .story {
       position: absolute;
       top: 20%;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 1vw;
+      font-size: 20px;
       width: 90%;
       height: 70%;
       color: #8e684f;
+      padding: 10px;
       border-radius: 10px;
       white-space: pre-wrap; }
 
@@ -96,20 +101,14 @@
     padding: 20px;
     border-radius: 10px;
     color: #7e583f;
-    font-size: 1vw;
+    font-size: 20px;
     background-color: rgba(255, 255, 255, 0.2); }
   .talk-container .reply-box .submit {
     position: absolute;
     left: 50%;
     bottom: 5%;
-    transform: translateX(-50%);
-    width: 7%;
-    border-radius: 10px;
-    padding: 10px; }
+    transform: translateX(-50%); }
   .talk-container .reply-box .change {
     position: absolute;
     right: 5%;
-    bottom: 5%;
-    width: 7%;
-    border-radius: 10px;
-    padding: 10px; }
+    bottom: 5%; }
