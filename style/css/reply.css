@@ -22,7 +22,9 @@
   background-color: #7e583f;
   color: #e8d6b4;
   text-align: center;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: bold; }
   .common-btn:hover, .reply-container .content .reply-box .prev-btn:hover, .reply-container .content .reply-box .next-btn:hover, .reply-container .content .reply-box .delete-btn:hover {
     color: #7e583f;
     background-color: #fff; }
@@ -55,7 +57,7 @@
       width: 80%;
       height: 55%;
       color: white;
-      font-size: 20px;
+      font-size: 1vw;
       white-space: pre-wrap;
       border: 2px white dashed;
       border-radius: 10px;
@@ -66,16 +68,14 @@
       left: 8%;
       width: 5vw;
       height: 2vw;
-      border-radius: 0.5vw;
-      font-weight: bold; }
+      border-radius: 0.5vw; }
     .reply-container .content .reply-box .next-btn {
       position: absolute;
       bottom: 5%;
       right: 8%;
       width: 5vw;
       height: 2vw;
-      border-radius: 0.5vw;
-      font-weight: bold; }
+      border-radius: 0.5vw; }
     .reply-container .content .reply-box .delete-btn {
       position: absolute;
       bottom: 5%;
@@ -83,8 +83,7 @@
       transform: translateX(-50%);
       width: 5vw;
       height: 2vw;
-      border-radius: 0.5vw;
-      font-weight: bold; }
+      border-radius: 0.5vw; }
   .reply-container .content .worry {
     position: relative;
     width: 90%;
@@ -103,12 +102,12 @@
     color: #7e583f; }
     .reply-container .content .worry-content .title {
       text-align: center;
-      font-size: 25px;
+      font-size: 1.3vw;
       font-weight: bold;
       margin-bottom: 2vw;
       overflow: hidden; }
     .reply-container .content .worry-content .story {
-      font-size: 18px;
+      font-size: 1vw;
       white-space: pre-wrap;
       width: 100%;
       height: 70%; }

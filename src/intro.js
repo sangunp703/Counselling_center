@@ -55,7 +55,7 @@ export default class Intro extends Component {
             <span>라</span>
           </div>
           <div class='image'>
-            <svg viewBox='120 10 400 470' width='100%' height='100%'>
+            <svg viewBox='80 30 470 420' width='100%' height='100%'>
               <filter id='dropshadow' x='-10' y='-10' width='100' height='100'>
                 <feGaussianBlur stdDeviation='12' />
               </filter>

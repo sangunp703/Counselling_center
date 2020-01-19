@@ -22,7 +22,9 @@
   background-color: #7e583f;
   color: #e8d6b4;
   text-align: center;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: bold; }
   .common-btn:hover {
     color: #7e583f;
     background-color: #fff; }

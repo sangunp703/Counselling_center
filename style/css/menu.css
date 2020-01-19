@@ -22,7 +22,9 @@
   background-color: #7e583f;
   color: #e8d6b4;
   text-align: center;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: bold; }
   .common-btn:hover, .menu-container .btn-box > button:hover {
     color: #7e583f;
     background-color: #fff; }
@@ -53,7 +55,7 @@
   text-align: center;
   color: #7e583f; }
   .menu-container .menu .type {
-    font-size: 40px;
+    font-size: 2vw;
     font-weight: bold;
     margin-top: 1.5vw; }
 
@@ -90,13 +92,13 @@
     border-left: 2px #7e583f dashed;
     padding: 0 1vw; }
     .menu-container .content .worry .title {
-      font-size: 25px;
+      font-size: 1.3vw;
       font-weight: bold;
       margin-bottom: 2vw;
       overflow: hidden; }
     .menu-container .content .worry .story {
       text-align: left;
-      font-size: 18px;
+      font-size: 1vw;
       color: #8e684f;
       width: 100%;
       height: 70%;

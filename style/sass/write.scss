@@ -13,7 +13,6 @@
     height: 60vh;
     background-image: url(../../public/assets/image/menu-bgi.png);
     background-size: 100% 100%;
-    font-size: 2rem;
 
     .title {
       all: unset;
@@ -23,7 +22,7 @@
       transform: translateX(-50%);
       width: 80%;
       background-color: rgba(255, 255, 255, 0.2);
-      font-size: 2rem;
+      font-size: $title-font-size;
       color: $text-color;
     }
 
@@ -36,7 +35,7 @@
       width: 80%;
       height: 50%;
       background-color: rgba(255, 255, 255, 0.2);
-      font-size: 1rem;
+      font-size: $story-font-size;
       color: $text-color-bright;
     }
 
@@ -45,7 +44,7 @@
       bottom: 20%;
       width: 100%;
       color: $warning-color;
-      font-size: 20px;
+      font-size: $notice-font-size;
       text-align: center;
     }
 

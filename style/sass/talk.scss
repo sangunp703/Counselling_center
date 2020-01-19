@@ -31,7 +31,7 @@
         top: 5%;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 25px;
+        font-size: $title-font-size;
         font-weight: bold;
         color: $text-color;
         overflow: hidden;
@@ -42,7 +42,7 @@
         top: 20%;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 18px;
+        font-size: $story-font-size;
         width: 90%;
         height: 70%;
         color: $text-color-bright;
@@ -73,6 +73,7 @@
       padding: 20px;
       border-radius: 10px;
       color: $text-color;
+      font-size: $story-font-size;
       background-color: rgba($color: #fff, $alpha: 0.2);
     }
     .submit {

@@ -28,7 +28,7 @@
         width: 80%;
         height: 55%;
         color: white;
-        font-size: 20px;
+        font-size: $story-font-size;
         white-space: pre-wrap;
         border: 2px white dashed;
         border-radius: 10px;
@@ -43,7 +43,6 @@
         width: 5vw;
         height: 2vw;
         border-radius: 0.5vw;
-        font-weight: bold;
       }
       .next-btn {
         @extend .common-btn;
@@ -53,7 +52,6 @@
         width: 5vw;
         height: 2vw;
         border-radius: 0.5vw;
-        font-weight: bold;
       }
 
       .delete-btn {
@@ -65,7 +63,6 @@
         width: 5vw;
         height: 2vw;
         border-radius: 0.5vw;
-        font-weight: bold;
       }
     }
 
@@ -93,14 +90,14 @@
 
       .title {
         text-align: center;
-        font-size: 25px;
+        font-size: $title-font-size;
         font-weight: bold;
         margin-bottom: 2vw;
         overflow: hidden;
       }
 
       .story {
-        font-size: 18px;
+        font-size: $story-font-size;
         @extend .hidden-scroll;
         white-space: pre-wrap;
         width: 100%;

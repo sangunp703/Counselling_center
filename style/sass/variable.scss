@@ -1,3 +1,4 @@
+// 색상 변수
 $btn-back-color: #7e583f;
 $btn-color: #e8d6b4;
 $btn-back-color-hover: #fff;
@@ -6,6 +7,14 @@ $warning-color: red;
 $text-color: #7e583f;
 $text-color-bright: #8e684f;
 
+// 폰트 크기 변수
+$notice-font-size: 1vw;
+$btn-font-size: 1vw;
+$type-font-size: 2vw;
+$title-font-size: 1.3vw;
+$story-font-size: 1vw;
+
+// 기본 설정
 .set-center {
   position: absolute;
   top: 50%;
@@ -34,6 +43,8 @@ $text-color-bright: #8e684f;
   color: $btn-color;
   text-align: center;
   cursor: pointer;
+  font-size: $btn-font-size;
+  font-weight: bold;
 
   &:hover {
     color: $btn-color-hover;
